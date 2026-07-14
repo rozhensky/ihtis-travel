@@ -1,0 +1,13 @@
+# Render Blueprint — статичний сайт ІХТІС Тревел (прототип)
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: ihtis-travel
+    runtime: static
+    buildCommand: echo "Static prototype — no build step"
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=604800
