@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ІХТІС Тревел — тури на море, екскурсії та паломництва</title>
-<meta name="description" content="ІХТІС Тревел — туроператор і паломницький центр. Море, екскурсії Європою, паломництва та дитячі табори. Підберіть тур за 3 кроки й залиште заявку.">
+<meta name="description" content="ІХТІС Тревел — туроператор і паломницький центр. Море, екскурсії Європою, паломництва та дитячі табори. Підберіть тур і залиште заявку.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -30,47 +30,11 @@
     --mono:"JetBrains Mono",ui-monospace,"SF Mono","Menlo",monospace;
     --maxw:1240px;
   }
-  @media (prefers-color-scheme:dark){:root{
-    --bg:#080B10; --surface:#10151C; --surface-2:#151C26; --surface-3:#1B2430;
-    --ink:#F3F6FB; --text:#C4CDDA; --muted:#8B96A6; --faint:#5C6675;
-    --border:#212B38; --border-strong:#2C3746;
-    --primary:#4C86FF; --primary-2:#1E6BFF; --primary-soft:#132133;
-    --teal:#19B6A5; --teal-bright:#22D3C0; --lime:#D7FF62;
-    --ring:rgba(76,134,255,.40);
-    --shadow-sm:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.35);
-    --shadow-md:0 12px 34px rgba(0,0,0,.5);
-    --shadow-lg:0 34px 80px rgba(0,0,0,.6);
-    --shadow-brand:0 16px 40px rgba(30,107,255,.35);
-  }}
-  :root[data-theme="light"]{
-    --bg:#FBFCF8; --surface:#FFFFFF; --surface-2:#F2F5FA; --surface-3:#E9EEF6;
-    --ink:#10151C; --text:#333C49; --muted:#66707E; --faint:#9AA4B2;
-    --border:#E4E9F1; --border-strong:#D3DBE7;
-    --primary:#1E6BFF; --primary-2:#0E52DA; --primary-soft:#EAF1FF;
-    --teal:#0E9E8E; --teal-bright:#14B8A6; --lime:#C6ED4A;
-    --ring:rgba(30,107,255,.30);
-    --shadow-sm:0 1px 2px rgba(16,21,28,.06),0 4px 12px rgba(16,21,28,.05);
-    --shadow-md:0 10px 30px rgba(16,21,28,.10);
-    --shadow-lg:0 30px 70px rgba(16,21,28,.16);
-    --shadow-brand:0 16px 36px rgba(30,107,255,.22);
-  }
-  :root[data-theme="dark"]{
-    --bg:#080B10; --surface:#10151C; --surface-2:#151C26; --surface-3:#1B2430;
-    --ink:#F3F6FB; --text:#C4CDDA; --muted:#8B96A6; --faint:#5C6675;
-    --border:#212B38; --border-strong:#2C3746;
-    --primary:#4C86FF; --primary-2:#1E6BFF; --primary-soft:#132133;
-    --teal:#19B6A5; --teal-bright:#22D3C0; --lime:#D7FF62;
-    --ring:rgba(76,134,255,.40);
-    --shadow-sm:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.35);
-    --shadow-md:0 12px 34px rgba(0,0,0,.5);
-    --shadow-lg:0 34px 80px rgba(0,0,0,.6);
-    --shadow-brand:0 16px 40px rgba(30,107,255,.35);
-  }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;transition:background .35s,color .35s}
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
   h1,h2,h3,h4{color:var(--ink);margin:0;line-height:1.06;letter-spacing:-.03em;text-wrap:balance;font-family:var(--disp);font-weight:600}
   p{margin:0}
   a{color:inherit;text-decoration:none}
@@ -112,10 +76,6 @@
     display:grid;place-items:center;cursor:pointer;transition:.2s;flex:none}
   .icon-btn:hover{border-color:var(--primary);color:var(--primary)}
   .burger{display:none}
-  .sun{display:none}
-  @media (prefers-color-scheme:dark){html:not([data-theme]) .sun{display:block}html:not([data-theme]) .moon{display:none}}
-  :root[data-theme="dark"] .sun{display:block}:root[data-theme="dark"] .moon{display:none}
-  :root[data-theme="light"] .sun{display:none}:root[data-theme="light"] .moon{display:block}
 
   /* HERO */
   .hero{position:relative;padding:56px 0 46px}
@@ -124,7 +84,7 @@
   .hero h1 .g{background:linear-gradient(100deg,var(--primary),var(--teal-bright) 70%);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:300}
   .hero .lede{margin-top:20px;font-size:clamp(15.5px,1.4vw,18px);color:var(--muted);max-width:40ch}
 
-  /* SEARCH BAR (Airbnb-style) */
+  /* SEARCH BAR */
   .searchbar{margin-top:28px;display:flex;align-items:center;background:var(--surface);border:1px solid var(--border);
     border-radius:var(--r-pill);box-shadow:var(--shadow-md);padding:7px 7px 7px 6px;max-width:600px;gap:2px}
   .sb-seg{flex:1;display:flex;flex-direction:column;gap:2px;padding:8px 16px;border-radius:var(--r-pill);cursor:pointer;transition:.18s;min-width:0}
@@ -142,7 +102,7 @@
   .hero-stats .s span{font-size:12.5px;color:var(--muted)}
   .hero-stats .dv{width:1px;background:var(--border)}
 
-  /* HERO VISUAL (real photo + floating pills) */
+  /* HERO VISUAL */
   .hero-visual{position:relative;height:500px}
   .hero-photo{position:absolute;inset:0;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--border)}
   .hero-photo img{width:100%;height:100%;object-fit:cover}
@@ -167,9 +127,8 @@
   .sec-head p{margin-top:8px;color:var(--muted);font-size:15.5px;max-width:52ch}
   .rail-nav{display:flex;gap:8px}
 
-  /* RAIL (Airbnb carousel) */
-  .rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 16px;margin:0 -4px;
-    scrollbar-width:none}
+  /* RAIL + GRID + CARDS */
+  .rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 16px;margin:0 -4px;scrollbar-width:none}
   .rail::-webkit-scrollbar{display:none}
   .pcard{scroll-snap-align:start;flex:0 0 300px;max-width:300px;cursor:pointer}
   .grid .pcard{flex:auto;max-width:none}
@@ -184,8 +143,7 @@
     background:var(--lime);color:#10151C;padding:5px 11px;border-radius:var(--r-pill)}
   .heart{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:0;cursor:pointer;
     background:rgba(255,255,255,.22);backdrop-filter:blur(6px);color:#fff;display:grid;place-items:center;transition:.2s}
-  .heart:hover{background:#fff;color:#E4396B}
-  .heart.on{background:#fff;color:#E4396B}
+  .heart:hover,.heart.on{background:#fff;color:#E4396B}
   .pcard .info{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:12px 4px 0}
   .pcard .info .t{font-family:var(--disp);font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
   .pcard .info .sub{font-size:12.5px;color:var(--muted);margin-top:2px}
@@ -193,46 +151,6 @@
   .pcard .price{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:15px;margin-top:8px;padding:0 4px}
   .pcard .price small{color:var(--muted);font-weight:500;font-size:11px}
   .is-hidden{display:none!important}
-
-  /* SPLIT */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .div-card{position:relative;border-radius:var(--r-lg);padding:32px;overflow:hidden;border:1px solid var(--border);
-    background:var(--surface);box-shadow:var(--shadow-sm);min-height:250px;display:flex;flex-direction:column}
-  .div-card.holy{background:var(--grad-holy);border-color:transparent;color:#fff}
-  .div-card .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)}
-  .div-card.holy .tag{color:var(--lime-inp)}
-  .div-card h3{font-size:25px;margin-top:10px;letter-spacing:-.03em}
-  .div-card.holy h3{color:#fff}
-  .div-card p{margin-top:10px;color:var(--muted);font-size:15px}
-  .div-card.holy p{color:rgba(255,255,255,.82)}
-  .div-card .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-  .div-card .t{font-size:12px;padding:6px 12px;border-radius:var(--r-pill);background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
-  .div-card.holy .t{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.2)}
-  .div-card .foot{margin-top:auto;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .div-card .tel{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:15px}
-  .div-card.holy .tel{color:#fff}
-
-  /* STEPS */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .stp{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;box-shadow:var(--shadow-sm)}
-  .stp .ic{width:44px;height:44px;border-radius:12px;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center}
-  .stp .num{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--primary);letter-spacing:.1em;margin-top:14px}
-  .stp h4{font-size:18px;margin-top:6px;letter-spacing:-.02em}
-  .stp p{margin-top:8px;color:var(--muted);font-size:14.5px}
-
-  /* AGENT */
-  .agent{background:var(--ink);border-radius:var(--r-lg);padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;overflow:hidden;position:relative}
-  .agent .eyebrow{color:var(--lime-inp)}
-  .agent h2{color:#fff;font-size:clamp(26px,3.2vw,36px);letter-spacing:-.035em;margin-top:12px}
-  .agent p{color:rgba(255,255,255,.72);margin-top:14px;font-size:16px;max-width:46ch}
-  .agent .glow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(30,107,255,.5),transparent 68%);top:-120px;right:-60px;filter:blur(20px)}
-  .mini{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px;position:relative;z-index:1}
-  .mini .r{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px;color:rgba(255,255,255,.85)}
-  .mini .r:last-child{border-bottom:0}
-  .mini .st{font-family:var(--mono);font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill);letter-spacing:.05em}
-  .st.ok{background:rgba(20,184,166,.18);color:#5FE6D2}
-  .st.wait{background:rgba(214,255,98,.16);color:var(--lime-inp)}
-  .st.new{background:rgba(30,107,255,.2);color:#8FB6FF}
 
   /* FORM */
   .lead{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
@@ -277,17 +195,19 @@
     .hero-grid{grid-template-columns:1fr;gap:24px}
     .hero-visual{height:340px;order:-1}
     .grid{grid-template-columns:1fr 1fr}
-    .split,.lead,.agent{grid-template-columns:1fr}
-    .agent{padding:30px}
-    .steps{grid-template-columns:1fr}
+    .lead{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr 1fr}
-    .cat-switch{display:none}
-    .nav-in .brand{margin-right:auto}
+    .nav-in{flex-wrap:wrap;height:auto;padding-top:12px;padding-bottom:10px;gap:12px 14px}
+    .brand{margin-right:auto}
+    .nav-agents{display:none}
+    .burger{display:grid}
+    .cat-switch{order:3;flex-basis:100%;width:100%;margin:0;justify-content:flex-start;overflow-x:auto}
+    .cat-switch::-webkit-scrollbar{display:none}
+    .cat-tab{flex:0 0 auto}
   }
   @media (max-width:560px){
     .wrap{padding:0 18px}
     .grid,.frow,.foot-grid{grid-template-columns:1fr}
-    .burger{display:grid}
     .hero-stats .dv{display:none}
     section{padding:52px 0}
     .searchbar{flex-wrap:wrap;border-radius:22px;gap:6px}
@@ -300,7 +220,7 @@
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a href="#top" class="brand" aria-label="ІХТІС Тревел">
+    <a href="index.html" class="brand" aria-label="ІХТІС Тревел">
       <span class="fish" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12c3-5 9-6 13-4 1.5.7 3 2 4.5 4-1.5 2-3 3.3-4.5 4-4 2-10 1-13-4Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 8l3-2M20 16l3 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="10.5" r="1" fill="#fff"/></svg></span>
       <span class="name"><b>ІХТІС</b> тревел</span>
     </a>
@@ -311,10 +231,7 @@
       <button class="cat-tab" data-cat="camps"><span class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 4l8 16H4L12 4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 12l5 8M12 12l-5 8" stroke="currentColor" stroke-width="1.7"/></svg></span>Табори</button>
     </nav>
     <div class="nav-right">
-      <button class="icon-btn" id="theme" aria-label="Змінити тему">
-        <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-        <svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-      </button>
+      <a href="agents.html" class="btn btn-ghost nav-agents">Агентам</a>
       <a href="#kontakty" class="btn btn-primary">Залишити заявку</a>
       <button class="icon-btn burger" id="burger" aria-label="Меню"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
     </div>
@@ -323,11 +240,7 @@
 
 <div class="msheet" id="msheet">
   <button class="icon-btn close" id="mclose" aria-label="Закрити"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-  <a href="#catalog" data-cat="sea">Море</a>
-  <a href="#catalog" data-cat="excursions">Екскурсії</a>
-  <a href="#catalog" data-cat="pilgrimage">Паломництво</a>
-  <a href="#catalog" data-cat="camps">Дитячі табори</a>
-  <a href="#agent">Агентам</a>
+  <a href="agents.html">Агентам</a>
   <a href="#kontakty">Контакти</a>
 </div>
 
@@ -341,12 +254,7 @@
 
       <div class="searchbar" role="search">
         <label class="sb-seg"><span class="k">Куди</span>
-          <select id="s-dir" aria-label="Напрямок">
-            <option value="any">Будь-який напрямок</option>
-            <option>Чорногорія</option><option>Хорватія</option><option>Греція</option>
-            <option>Італія</option><option>Іспанія</option><option>Албанія</option>
-            <option>Меджугор'є</option><option>Ізраїль</option><option>Люрд</option>
-          </select>
+          <select id="s-dir" aria-label="Напрямок"><option value="any">Будь-який напрямок</option></select>
         </label>
         <span class="sb-div"></span>
         <label class="sb-seg"><span class="k">Коли</span>
@@ -492,70 +400,6 @@
   </div>
 </section>
 
-<section id="napryamy">
-  <div class="wrap">
-    <div class="sec-head reveal"><div>
-      <p class="eyebrow">Один сайт — два напрями</p>
-      <h2>Оберіть свій світ подорожі</h2>
-      <p>Туроператор і Паломницький центр працюють під одним дахом, у спільній системі — але з власними менеджерами й контактами.</p>
-    </div></div>
-    <div class="split">
-      <div class="div-card reveal">
-        <span class="tag">IHTIS Travel · Туроператор</span>
-        <h3>Море, Європа та дитячі табори</h3>
-        <p>Відпочинок на морі, екскурсійні тури Європою та літні табори для дітей. Виїзди автобусом і авіа з кількох міст України.</p>
-        <div class="tags"><span class="t">Море</span><span class="t">Екскурсії</span><span class="t">Дитячі табори</span></div>
-        <div class="foot"><span class="tel">(096) 000 11 22</span><a href="#catalog" class="btn btn-ghost" data-cat="sea">Дивитися тури</a></div>
-      </div>
-      <div class="div-card holy reveal">
-        <span class="tag">ІХТІС · Паломницький центр</span>
-        <h3>Паломництва до святинь</h3>
-        <p>Меджугор'є, Ізраїль, Люрд, Фатіма, Рим і Ватикан. Поїздки з духовним супроводом та продуманою програмою.</p>
-        <div class="tags"><span class="t">Меджугор'є</span><span class="t">Ізраїль</span><span class="t">Люрд · Фатіма</span><span class="t">Рим</span></div>
-        <div class="foot"><span class="tel">(098) 000 33 55</span><a href="#catalog" class="btn btn-ghost" data-cat="pilgrimage" style="border-color:rgba(255,255,255,.35);color:#fff">Дивитися програми</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="how" style="background:var(--surface-2);border-block:1px solid var(--border)">
-  <div class="wrap">
-    <div class="sec-head reveal" style="justify-content:center;text-align:center"><div>
-      <p class="eyebrow">Як це працює</p>
-      <h2>Від «хочу поїхати» до підтвердженого туру — 3 кроки</h2>
-    </div></div>
-    <div class="steps">
-      <div class="stp reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="18" cy="16" r="3.5" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="num">КРОК 01</div><h4>Оберіть тур</h4><p>Перемикач зверху (Море · Екскурсії · Паломництво · Табори) + фільтри. Знайти «свій» тур можна за хвилину.</p></div>
-      <div class="stp reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 5h14v11H8l-3 3V5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="num">КРОК 02</div><h4>Залиште заявку</h4><p>Коротка форма без реєстрації: тур, ім'я, телефон і зручний час дзвінка. Заявка одразу потрапляє в систему.</p></div>
-      <div class="stp reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4.5 5.5c0 7 4.9 12 12 12l1.6-3.2-3.4-1.6-1.4 1.6a10 10 0 01-4-4l1.6-1.4L9.9 5H6.5c-1.1 0-2 .9-2 2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="num">КРОК 03</div><h4>Ми передзвонимо</h4><p>Менеджер підтвердить деталі, відповість на запитання й забронює місця. Жодна заявка не губиться.</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="agent reveal" id="agent">
-      <div class="glow" aria-hidden="true"></div>
-      <div style="position:relative;z-index:1">
-        <p class="eyebrow">Агентам</p>
-        <h2>Кабінет агента: заводьте свої групи самі</h2>
-        <p>Агентські ціни й комісія, бронювання для клієнтів, внесення учасників поїздки та статуси заявок — усе в одному кабінеті, синхронізовано з базою турів.</p>
-        <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
-          <a href="#kontakty" class="btn btn-primary">Стати партнером</a>
-          <a href="#kontakty" class="btn btn-ghost" style="border-color:rgba(255,255,255,.28);color:#fff">Умови співпраці</a>
-        </div>
-      </div>
-      <div class="mini" aria-hidden="true">
-        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:6px">МОЇ ГРУПИ</div>
-        <div class="r"><span>Будва · 12–20.07 · 4 ос.</span><span class="st ok">Підтв.</span></div>
-        <div class="r"><span>Хорватія · 05–15.08 · 2 ос.</span><span class="st wait">Оплата</span></div>
-        <div class="r"><span>Меджугор'є · 22.08 · 6 ос.</span><span class="st new">Нова</span></div>
-        <div class="r"><span>Комісія за місяць</span><span style="font-family:var(--mono);color:var(--lime-inp);font-weight:700">€1 240</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="kontakty" style="background:var(--surface-2);border-top:1px solid var(--border)">
   <div class="wrap lead">
     <div class="reveal">
@@ -592,12 +436,12 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a href="#top" class="brand" style="margin-bottom:14px"><span class="fish" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12c3-5 9-6 13-4 1.5.7 3 2 4.5 4-1.5 2-3 3.3-4.5 4-4 2-10 1-13-4Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 8l3-2M20 16l3 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="10.5" r="1" fill="#fff"/></svg></span><span class="name"><b>ІХТІС</b> тревел</span></a>
+        <a href="index.html" class="brand" style="margin-bottom:14px"><span class="fish" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12c3-5 9-6 13-4 1.5.7 3 2 4.5 4-1.5 2-3 3.3-4.5 4-4 2-10 1-13-4Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 8l3-2M20 16l3 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="10.5" r="1" fill="#fff"/></svg></span><span class="name"><b>ІХТІС</b> тревел</span></a>
         <p style="max-width:30ch">Море, Європа та паломництва. ΙΧΘΥΣ — «риба», давній символ, що дав нам ім'я й напрям.</p>
       </div>
       <div><h5>Туроператор</h5><a href="#catalog" data-cat="sea">Морські тури</a><a href="#catalog" data-cat="excursions">Екскурсії Європою</a><a href="#catalog" data-cat="camps">Дитячі табори</a></div>
       <div><h5>Паломництво</h5><a href="#catalog" data-cat="pilgrimage">Меджугор'є</a><a href="#catalog" data-cat="pilgrimage">Ізраїль</a><a href="#catalog" data-cat="pilgrimage">Люрд · Фатіма</a></div>
-      <div><h5>Контакти</h5><p>Тернопіль, бул. Т. Шевченка, 25</p><a href="tel:+380960001122">Туроператор: (096) 000 11 22</a><a href="tel:+380980003355">Паломництво: (098) 000 33 55</a><a href="#agent">Агентам · кабінет</a></div>
+      <div><h5>Контакти</h5><p>Тернопіль, бул. Т. Шевченка, 25</p><a href="tel:+380960001122">Туроператор: (096) 000 11 22</a><a href="tel:+380980003355">Паломництво: (098) 000 33 55</a><a href="agents.html">Агентам · кабінет</a></div>
     </div>
     <div class="foot-bot"><span>© 2026 ІХТІС Тревел. Прототип нового сайту.</span><span class="badge">Прототип ребрендингу</span></div>
   </div>
@@ -608,28 +452,20 @@
 <script>
 (function(){
   "use strict";
-  var root=document.documentElement;
-  try{var s=localStorage.getItem('ihtis-theme');if(s)root.setAttribute('data-theme',s);}catch(e){}
-  document.getElementById('theme').addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
-    var n=cur==='dark'?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('ihtis-theme',n);}catch(e){}
-  });
   var nav=document.getElementById('nav');
   addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8);},{passive:true});
   var sheet=document.getElementById('msheet');
   document.getElementById('burger').addEventListener('click',function(){sheet.classList.add('open');});
   document.getElementById('mclose').addEventListener('click',function(){sheet.classList.remove('open');});
 
-  // Category switch
   var COPY={
     sea:{eb:'Море · Адріатика · Егейське · Середземне',ti:'Ваш ідеальний тур <span class="g">на море</span>',le:'Оберіть напрямок, місяць і місто виїзду — ми покажемо тури, що підходять саме вам.',rk:'Рекомендовані',rt:'Гарячі тури на море',gk:'Напрямки',gt:'Оберіть, куди хочете їхати',img:'assets/img/montenegro.jpg',cap:'<span class="k">🔥 Хіт літа · Адріатика</span><h3>Будва, Чорногорія</h3>'},
     excursions:{eb:'Екскурсії Європою · автобусні тури',ti:'Європа, яку хочеться <span class="g">побачити</span>',le:'Багатоденні екскурсійні тури містами Європи. Оберіть маршрут, дати й місто виїзду.',rk:'Рекомендовані',rt:'Гарячі екскурсійні тури',gk:'Маршрути',gt:'Куди поїхати Європою',img:'assets/img/croatia.jpg',cap:'<span class="k">Екскурсії · Адріатика</span><h3>Дубровник, Хорватія</h3>'},
     pilgrimage:{eb:'Паломницький центр ІХТІС',ti:'Подорож до <span class="g">святинь</span>',le:'Меджугор\'є, Ізраїль, Люрд, Фатіма, Рим. Поїздки з духовним супроводом.',rk:'Рекомендовані',rt:'Паломницькі поїздки',gk:'Святині',gt:'Оберіть паломництво',img:'assets/img/israel.jpg',cap:'<span class="k">Паломництво · Святі місця</span><h3>Єрусалим, Ізраїль</h3>'},
     camps:{eb:'Дитячі табори · літо 2026',ti:'Літо, яке діти <span class="g">запам\'ятають</span>',le:'Табори в Карпатах і Європі: відпочинок, мова та нові друзі під наглядом.',rk:'Рекомендовані',rt:'Табори цього літа',gk:'Табори',gt:'Оберіть табір для дитини',img:'assets/img/albania.jpg',cap:'<span class="k">Дитячі табори · літо 2026</span><h3>Море та Карпати</h3>'}
   };
-  var cur='sea';
   function setCat(cat){
-    if(!COPY[cat])return; cur=cat;
+    if(!COPY[cat])return;
     document.querySelectorAll('.cat-tab').forEach(function(t){t.classList.toggle('on',t.dataset.cat===cat);});
     var c=COPY[cat];
     document.getElementById('hero-eyebrow').textContent=c.eb;
@@ -641,10 +477,8 @@
     document.getElementById('grid-title').textContent=c.gt;
     var hp=document.querySelector('.hero-photo img');if(hp&&c.img)hp.src=c.img;
     var hc=document.querySelector('.hero-cap');if(hc&&c.cap)hc.innerHTML=c.cap;
-    var n1=0,n2=0;
-    document.querySelectorAll('#rail .pcard').forEach(function(p){var m=p.dataset.cats.indexOf(cat)>-1;p.classList.toggle('is-hidden',!m);if(m)n1++;});
-    document.querySelectorAll('#grid .pcard').forEach(function(p){var m=p.dataset.cats.indexOf(cat)>-1;p.classList.toggle('is-hidden',!m);if(m)n2++;});
-    // rebuild the "Куди" search dropdown to match the active category
+    document.querySelectorAll('#rail .pcard').forEach(function(p){p.classList.toggle('is-hidden',p.dataset.cats.indexOf(cat)<0);});
+    document.querySelectorAll('#grid .pcard').forEach(function(p){p.classList.toggle('is-hidden',p.dataset.cats.indexOf(cat)<0);});
     var sel=document.getElementById('s-dir');
     if(sel){
       var seen={},opts='<option value="any">Будь-який напрямок</option>';
@@ -663,15 +497,12 @@
     a.addEventListener('click',function(){setCat(a.dataset.cat);sheet.classList.remove('open');});
   });
 
-  // Rail arrows
   var rail=document.getElementById('rail');
   document.getElementById('rail-next').addEventListener('click',function(){rail.scrollBy({left:340,behavior:'smooth'});});
   document.getElementById('rail-prev').addEventListener('click',function(){rail.scrollBy({left:-340,behavior:'smooth'});});
 
-  // Hearts
   document.addEventListener('click',function(e){var h=e.target.closest('.heart');if(h){h.classList.toggle('on');e.preventDefault();}});
 
-  // Search + form
   var toast=document.getElementById('toast'),tmr;
   function showToast(m){document.getElementById('toast-msg').textContent=m;toast.classList.add('show');clearTimeout(tmr);tmr=setTimeout(function(){toast.classList.remove('show');},4200);}
   document.getElementById('s-go').addEventListener('click',function(){
@@ -681,10 +512,9 @@
   });
   document.getElementById('lead-form').addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('f-name').value.trim();showToast((n?n+', ':'')+'заявку прийнято! Менеджер зателефонує найближчим часом.');this.reset();});
 
-  // Reveal
   if('IntersectionObserver'in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}
   else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
-  setCat('sea'); // initialise dropdown + rail/grid consistently on load
+  setCat('sea');
 })();
 </script>
 </body>
