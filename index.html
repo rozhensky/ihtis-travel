@@ -644,6 +644,18 @@
     var n1=0,n2=0;
     document.querySelectorAll('#rail .pcard').forEach(function(p){var m=p.dataset.cats.indexOf(cat)>-1;p.classList.toggle('is-hidden',!m);if(m)n1++;});
     document.querySelectorAll('#grid .pcard').forEach(function(p){var m=p.dataset.cats.indexOf(cat)>-1;p.classList.toggle('is-hidden',!m);if(m)n2++;});
+    // rebuild the "Куди" search dropdown to match the active category
+    var sel=document.getElementById('s-dir');
+    if(sel){
+      var seen={},opts='<option value="any">Будь-який напрямок</option>';
+      document.querySelectorAll('#grid .pcard').forEach(function(p){
+        if(p.dataset.cats.indexOf(cat)>-1){
+          var t=p.querySelector('.t').textContent.trim();
+          if(!seen[t]){seen[t]=1;opts+='<option>'+t+'</option>';}
+        }
+      });
+      sel.innerHTML=opts;
+    }
   }
   document.getElementById('catswitch').addEventListener('click',function(e){var b=e.target.closest('.cat-tab');if(b)setCat(b.dataset.cat);});
   document.querySelectorAll('[data-cat]').forEach(function(a){
@@ -672,6 +684,7 @@
   // Reveal
   if('IntersectionObserver'in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}
   else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
+  setCat('sea'); // initialise dropdown + rail/grid consistently on load
 })();
 </script>
 </body>
