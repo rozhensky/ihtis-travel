@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Будва «Серце Чорногорії» — тур у Чорногорію · ІХТІС Тревел</title>
+<meta name="description" content="Морський тур у Будву, Чорногорія. Готель POZZO****, автобус єврокласу, виїзд з 17 міст. Програма, точки посадки, що входить у ціну — від €525. Залиште заявку.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+  :root{
+    --bg:#FBFCF8; --surface:#FFFFFF; --surface-2:#F2F5FA;
+    --ink:#10151C; --text:#333C49; --muted:#66707E; --faint:#9AA4B2;
+    --border:#E4E9F1; --border-strong:#D3DBE7;
+    --primary:#1E6BFF; --primary-2:#0E52DA; --primary-soft:#EAF1FF;
+    --teal:#0E9E8E; --teal-bright:#14B8A6; --ok:#0E9E8E; --no:#C0455B;
+    --ring:rgba(30,107,255,.30);
+    --shadow-sm:0 1px 2px rgba(16,21,28,.06),0 4px 12px rgba(16,21,28,.05);
+    --shadow-md:0 10px 30px rgba(16,21,28,.10);
+    --shadow-lg:0 30px 70px rgba(16,21,28,.16);
+    --shadow-brand:0 16px 36px rgba(30,107,255,.22);
+    --r-card:14px; --r-lg:18px; --r-pill:999px;
+    --sans:"Geist","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    --disp:"Inter","Geist",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,"SF Mono","Menlo",monospace;
+    --maxw:1200px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{color:var(--ink);margin:0;line-height:1.12;letter-spacing:-.03em;text-wrap:balance;font-family:var(--disp);font-weight:600}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--primary);color:#fff}
+  :focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);font-size:14px;font-weight:600;padding:12px 22px;border-radius:var(--r-pill);border:1px solid transparent;cursor:pointer;transition:transform .18s,box-shadow .25s,border-color .2s,color .2s}
+  .btn-primary{background:linear-gradient(180deg,var(--primary),var(--primary-2));color:#fff;box-shadow:var(--shadow-brand)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 50px rgba(30,107,255,.32)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--border-strong)}
+  .btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+  .btn-lg{padding:15px 26px;font-size:15px}
+  .mono{font-family:var(--mono)}
+
+  header.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--border)}
+  .nav-in{display:flex;align-items:center;gap:18px;height:70px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand .fish{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(155deg,#3E8BFF,#14B8A6);box-shadow:var(--shadow-brand)}
+  .brand .name{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.04em;color:var(--ink)}
+  .brand .name b{font-weight:700}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .back{font-size:14px;font-weight:600;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+  .back:hover{color:var(--primary)}
+
+  .breadcrumb{font-size:12.5px;color:var(--muted);padding:20px 0 0;display:flex;gap:7px;flex-wrap:wrap}
+  .breadcrumb a:hover{color:var(--primary)}
+  .breadcrumb .sep{color:var(--faint)}
+
+  .thead{padding:14px 0 20px}
+  .thead h1{font-size:clamp(28px,3.8vw,44px);letter-spacing:-.04em}
+  .thead .meta{margin-top:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14.5px}
+  .thead .meta .rate{display:inline-flex;align-items:center;gap:5px;color:var(--ink);font-weight:600}
+  .thead .meta .dot{color:var(--faint)}
+  .thead .meta .save{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--ink);cursor:pointer}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:10px;border-radius:var(--r-lg);overflow:hidden}
+  .gallery .g{position:relative;overflow:hidden;cursor:pointer}
+  .gallery .g:first-child{grid-row:1/3}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .gallery .g:hover img{transform:scale(1.05)}
+  .gallery .more{position:absolute;inset:0;background:rgba(16,21,28,.5);color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px;backdrop-filter:blur(1px)}
+
+  /* LAYOUT */
+  .layout{display:grid;grid-template-columns:1fr 372px;gap:40px;align-items:start;padding:34px 0 60px}
+  .block{padding:26px 0;border-top:1px solid var(--border)}
+  .block:first-child{border-top:0;padding-top:6px}
+  .block h2{font-size:22px;letter-spacing:-.03em}
+  .block h2 .cnt{color:var(--faint);font-weight:500;font-size:15px}
+  .block>p{margin-top:10px;color:var(--text)}
+  .block .sub{color:var(--muted);font-size:13.5px;margin-top:4px}
+
+  /* FACTS */
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-top:4px}
+  .fact{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 14px}
+  .fact .ic{width:38px;height:38px;flex:none;border-radius:10px;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center}
+  .fact b{color:var(--ink);font-size:13.5px;display:block;letter-spacing:-.01em}
+  .fact span{font-size:12px;color:var(--muted)}
+
+  /* PROGRAM */
+  .prog{margin-top:16px;position:relative}
+  .prog .day{display:grid;grid-template-columns:auto 1fr;gap:16px;padding-bottom:18px}
+  .prog .day:last-child{padding-bottom:0}
+  .prog .mark{position:relative;display:flex;flex-direction:column;align-items:center}
+  .prog .mark .n{width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;font-family:var(--mono);font-size:12px;font-weight:700;display:grid;place-items:center;z-index:1}
+  .prog .day:not(:last-child) .mark::after{content:"";position:absolute;top:34px;bottom:-18px;width:2px;background:var(--border)}
+  .prog .txt h4{font-size:16px;letter-spacing:-.02em}
+  .prog .txt p{color:var(--muted);font-size:14px;margin-top:4px}
+
+  /* TABLES */
+  .tbl{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px;overflow:hidden;border-radius:12px;border:1px solid var(--border)}
+  .tbl th{background:var(--surface-2);color:var(--muted);font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:left;padding:10px 14px}
+  .tbl td{padding:11px 14px;border-top:1px solid var(--border);color:var(--text)}
+  .tbl td.reg{font-weight:600;color:var(--ink)}
+  .tbl td.time,.tbl td.pr{font-family:var(--mono);font-weight:600;color:var(--ink);white-space:nowrap}
+  .tbl tr td:first-child{color:var(--ink);font-weight:500}
+  .scroll-x{overflow-x:auto}
+
+  /* INCLUDED / NOT */
+  .inc{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  .inc .col{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+  .inc h4{font-size:15px;display:flex;align-items:center;gap:8px}
+  .inc ul{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+  .inc li{font-size:13.5px;color:var(--text);display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+  .inc li .m{flex:none;margin-top:2px}
+  .ok .m{color:var(--ok)}.no .m{color:var(--no)}
+  .inc .price-tag{margin-left:auto;font-family:var(--mono);font-weight:700;color:var(--ink);font-size:12.5px;white-space:nowrap}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{font-size:13px;color:var(--text);background:var(--surface-2);border:1px solid var(--border);padding:8px 14px;border-radius:var(--r-pill)}
+
+  details.note{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);overflow:hidden}
+  details.note summary{cursor:pointer;padding:14px 16px;font-weight:600;color:var(--ink);font-size:14.5px;list-style:none;display:flex;align-items:center;justify-content:space-between}
+  details.note summary::-webkit-details-marker{display:none}
+  details.note summary .ar{transition:transform .2s;color:var(--muted)}
+  details.note[open] summary .ar{transform:rotate(180deg)}
+  details.note .body{padding:0 16px 16px;color:var(--muted);font-size:13.5px}
+  details.note .body ul{margin:6px 0 0;padding-left:18px}
+  details.note .body li{margin-bottom:6px}
+
+  /* BOOKING */
+  .book-wrap{position:sticky;top:88px}
+  .book{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:22px}
+  .book .price-row{display:flex;align-items:baseline;gap:7px}
+  .book .from{color:var(--muted);font-size:13px}
+  .book .amt{font-family:var(--disp);font-size:32px;font-weight:600;color:var(--ink);letter-spacing:-.03em}
+  .book .per{color:var(--muted);font-size:13px}
+  .book .rr{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .book form{margin-top:16px;display:flex;flex-direction:column;gap:11px}
+  .book label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:var(--ink)}
+  .book select,.book input{font-family:var(--sans);font-size:14px;color:var(--ink);background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:11px 12px;width:100%;transition:.2s}
+  .book select:focus,.book input:focus{outline:none;border-color:var(--primary);background:var(--surface);box-shadow:0 0 0 4px var(--ring)}
+  .book .two{display:grid;grid-template-columns:1fr 1.2fr;gap:10px}
+  .book .go{margin-top:4px;width:100%}
+  .book .assur{margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:var(--muted)}
+  .book .assur span{display:flex;align-items:center;gap:8px}
+  .book .assur .m{color:var(--ok)}
+  .book .call{margin-top:10px;width:100%}
+
+  /* MOBILE STICKY BAR */
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:120;display:none;align-items:center;justify-content:space-between;gap:14px;
+    background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:12px 18px;box-shadow:0 -8px 24px rgba(16,21,28,.08)}
+  .mbar .mp b{font-family:var(--disp);font-size:20px;color:var(--ink);font-weight:600}
+  .mbar .mp span{font-size:12px;color:var(--muted)}
+  .mbar .btn{flex:none}
+
+  footer{border-top:1px solid var(--border);background:var(--surface);padding:48px 0 30px;margin-top:10px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px}
+  .foot-grid h5{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:14px;font-weight:600}
+  .foot-grid a,.foot-grid p{display:block;font-size:14px;color:var(--muted);margin-bottom:9px}
+  .foot-grid a:hover{color:var(--primary)}
+  .foot-bot{margin-top:36px;padding-top:22px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--faint)}
+
+  .toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%) translateY(140px);background:var(--ink);color:var(--bg);padding:14px 22px;border-radius:var(--r-pill);box-shadow:var(--shadow-lg);font-size:14px;font-weight:500;z-index:300;display:flex;align-items:center;gap:10px;transition:transform .4s cubic-bezier(.2,.8,.2,1);max-width:90vw}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .toast .ch{width:22px;height:22px;border-radius:50%;background:var(--teal-bright);color:#fff;display:grid;place-items:center;flex:none}
+
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;gap:0}
+    .book-wrap{position:static;margin-top:26px}
+    .gallery{grid-template-columns:1fr 1fr;grid-template-rows:180px 140px}
+    .gallery .g:first-child{grid-row:auto;grid-column:1/3;height:180px}
+    .facts{grid-template-columns:1fr}
+    .inc{grid-template-columns:1fr}
+    .mbar{display:flex}
+    body{padding-bottom:76px}
+    .thead .meta .save{display:none}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 16px}
+    .book .two{grid-template-columns:1fr}
+  }
+</style>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="brand" aria-label="ІХТІС Тревел">
+      <span class="fish" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M3 12c3-5 9-6 13-4 1.5.7 3 2 4.5 4-1.5 2-3 3.3-4.5 4-4 2-10 1-13-4Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 8l3-2M20 16l3 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="10.5" r="1" fill="#fff"/></svg></span>
+      <span class="name"><b>ІХТІС</b> тревел</span>
+    </a>
+    <div class="nav-right">
+      <a href="index.html" class="back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Усі тури</a>
+      <a href="#book" class="btn btn-primary">Залишити заявку</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Навігація">
+    <a href="index.html">Головна</a><span class="sep">›</span>
+    <a href="index.html">Море</a><span class="sep">›</span>
+    <a href="index.html">Чорногорія</a><span class="sep">›</span>
+    <span>Будва</span>
+  </nav>
+
+  <div class="thead">
+    <h1>Будва «Серце Чорногорії»</h1>
+    <div class="meta">
+      <span class="rate">★ 4.9 <span style="color:var(--muted);font-weight:500">· 124 відгуки</span></span>
+      <span class="dot">·</span><span>Чорногорія, Адріатичне море</span>
+      <span class="dot">·</span><span>8–11 днів</span>
+      <span class="dot">·</span><span>автобусний тур</span>
+      <span class="save"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-9.2-9C1.3 8 3 4.8 6.2 4.8c2 0 3.2 1.3 3.8 2.2.6-.9 1.8-2.2 3.8-2.2 3.2 0 4.9 3.2 3.4 6.2C19 15.5 12 20 12 20Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Зберегти</span>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <div class="g"><img src="assets/img/montenegro.jpg" alt="Будва — панорама затоки" loading="eager"></div>
+    <div class="g"><img src="assets/img/sveti_stefan.jpg" alt="Свети-Стефан" loading="lazy"></div>
+    <div class="g"><img src="assets/img/kotor.jpg" alt="Котор" loading="lazy"></div>
+    <div class="g"><img src="assets/img/perast.jpg" alt="Пераст" loading="lazy"><div class="more">+ 12 фото</div></div>
+  </div>
+</div>
+
+<div class="wrap layout">
+  <div class="content">
+    <div class="block">
+      <div class="facts">
+        <div class="fact"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V7l8-4 8 4v13M9 20v-5h6v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Hotel POZZO ★★★★</b><span>2-га лінія від моря</span></div></div>
+        <div class="fact"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 9h16M6 9V6a2 2 0 012-2h8a2 2 0 012 2v3M5 9v11h14V9" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span><div><b>Напівпансіон</b><span>сніданки + вечері</span></div></div>
+        <div class="fact"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 16V7a2 2 0 012-2h12a2 2 0 012 2v9M4 16h16M4 16v2M20 16v2M7 12h10M7 8h10" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8" cy="18.5" r="1.4" fill="currentColor"/><circle cx="16" cy="18.5" r="1.4" fill="currentColor"/></svg></span><div><b>Автобус єврокласу</b><span>з супроводом керівника</span></div></div>
+        <div class="fact"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.2 7-11a7 7 0 10-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.7"/></svg></span><div><b>Виїзд з 17 міст</b><span>5 областей України</span></div></div>
+        <div class="fact"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 15c1.5 0 1.5 1.4 3 1.4S10.5 15 12 15s1.5 1.4 3 1.4S16.5 15 18 15s1.5 1.4 3 1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M6 12l6-3 6 3" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span><div><b>Адріатичне море</b><span>Будва · сонячне узбережжя</span></div></div>
+        <div class="fact"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>7 або 9 ночей</b><span>дати з липня 2026</span></div></div>
+      </div>
+      <p style="margin-top:18px">Морський відпочинок на Адріатиці в самому серці Чорногорії. Комфортний переїзд автобусом єврокласу, готель <b>POZZO ★★★★</b> за 2-ю лінією від моря, напівпансіон і насичена факультативна програма — каньйони, озера й старовинні міста. Ідеально для родин і компаній.</p>
+    </div>
+
+    <div class="block">
+      <h2>Програма туру <span class="cnt">по днях</span></h2>
+      <div class="prog">
+        <div class="day"><div class="mark"><span class="n">1</span></div><div class="txt"><h4>Виїзд з України</h4><p>Виїзд із вказаних міст, проходження українсько-румунського кордону, нічний переїзд до Чорногорії.</p></div></div>
+        <div class="day"><div class="mark"><span class="n">2</span></div><div class="txt"><h4>Прибуття та заселення</h4><p>Прибуття в Будву орієнтовно о 14:00, заселення в готель POZZO, відпочинок на сонячному узбережжі.</p></div></div>
+        <div class="day"><div class="mark"><span class="n">3–8</span></div><div class="txt"><h4>Відпочинок на морі</h4><p>Вільний відпочинок на Адріатиці + факультативні екскурсії для знайомства з країною: каньйони Тара й Морача, Скадарське озеро, Цетинє, Котор, Дубровник.</p></div></div>
+        <div class="day"><div class="mark"><span class="n">9</span></div><div class="txt"><h4>Виселення та виїзд</h4><p>Виселення до 10:00, нічний переїзд в Україну, прибуття наступного дня орієнтовно після обіду.</p></div></div>
+      </div>
+      <p class="sub">Для програми на 9 ночей днів відпочинку більше. Точний розклад — в інфолисті за день до виїзду.</p>
+    </div>
+
+    <div class="block">
+      <h2>Точки й час посадки</h2>
+      <p class="sub">17 міст у 5 областях. Просимо бути на місці посадки за 20 хв до виїзду. Година може змінюватися залежно від часу запису автобуса на кордон.</p>
+      <div class="scroll-x">
+      <table class="tbl">
+        <thead><tr><th>Область</th><th>Місто</th><th>Час виїзду</th></tr></thead>
+        <tbody>
+          <tr><td class="reg" rowspan="3">Тернопільська</td><td>Кременець</td><td class="time">04:30</td></tr>
+          <tr><td>Тернопіль</td><td class="time">05:30</td></tr>
+          <tr><td>Зборів</td><td class="time">06:00</td></tr>
+          <tr><td class="reg" rowspan="4">Львівська</td><td>Броди</td><td class="time">05:45</td></tr>
+          <tr><td>Золочів</td><td class="time">06:30</td></tr>
+          <tr><td>Львів</td><td class="time">08:00</td></tr>
+          <tr><td>Стрий</td><td class="time">09:00</td></tr>
+          <tr><td class="reg" rowspan="3">Івано-Франківська</td><td>Івано-Франківськ</td><td class="time">07:00</td></tr>
+          <tr><td>Калуш</td><td class="time">07:45</td></tr>
+          <tr><td>Долина</td><td class="time">08:15</td></tr>
+          <tr><td class="reg" rowspan="4">Закарпатська</td><td>Свалява</td><td class="time">11:30</td></tr>
+          <tr><td>Ужгород</td><td class="time">12:00</td></tr>
+          <tr><td>Мукачево</td><td class="time">13:00</td></tr>
+          <tr><td>Дяково</td><td class="time">15:00</td></tr>
+          <tr><td class="reg">Волинська</td><td>Луцьк</td><td class="time">02:00</td></tr>
+          <tr><td class="reg" rowspan="2">Рівненська</td><td>Рівне</td><td class="time">04:00</td></tr>
+          <tr><td>Дубно</td><td class="time">05:30</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Що входить і не входить</h2>
+      <div class="inc">
+        <div class="col ok">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0E9E8E" opacity=".12"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="#0E9E8E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Входить у вартість</h4>
+          <ul>
+            <li><span class="m">✓</span> Переїзд комфортабельним автобусом єврокласу</li>
+            <li><span class="m">✓</span> Супровід керівника групи</li>
+            <li><span class="m">✓</span> Проживання в готелі POZZO ★★★★ (2-га лінія)</li>
+            <li><span class="m">✓</span> Сніданки (шведська лінія) та вечері (порційно)</li>
+            <li><span class="m">✓</span> Трансфери з Івано-Франківської, Волинської та Рівненської областей</li>
+          </ul>
+        </div>
+        <div class="col no">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#C0455B" opacity=".12"/><path d="M9 9l6 6M15 9l-6 6" stroke="#C0455B" stroke-width="1.9" stroke-linecap="round"/></svg> Не входить (оплата окремо)</h4>
+          <ul>
+            <li><span class="m">✕</span> Депозит на факультативні екскурсії <span class="price-tag">35 €</span></li>
+            <li><span class="m">✕</span> Міський податок (city-tax) <span class="price-tag">2 €/ніч</span></li>
+            <li><span class="m">✕</span> Паливний збір <span class="price-tag">10 €</span></li>
+            <li><span class="m">✕</span> Медичне страхування (за бажанням)</li>
+            <li><span class="m">✕</span> Харчування поза готелем, громадський транспорт</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sub">Депозит на факультативи обов'язковий для всіх, окрім дітей до 10 років.</p>
+    </div>
+
+    <div class="block">
+      <h2>Факультативні екскурсії <span class="cnt">за бажанням</span></h2>
+      <p class="sub">Оплачуються на місці. Мінімальна група — 20 осіб. Ціни: дорослий / дитина.</p>
+      <div class="scroll-x">
+      <table class="tbl">
+        <thead><tr><th>Екскурсія</th><th>Дорослий</th><th>Дитина</th></tr></thead>
+        <tbody>
+          <tr><td>Оглядова екскурсія у Будві</td><td class="pr">15 €</td><td class="pr">10 €</td></tr>
+          <tr><td>Катер по Скадарському озеру</td><td class="pr">50 €</td><td class="pr">35 €</td></tr>
+          <tr><td>Каньйони Тара та Морача</td><td class="pr">60 €</td><td class="pr">50 €</td></tr>
+          <tr><td>Цетинє та Ловчен</td><td class="pr">40 €</td><td class="pr">30 €</td></tr>
+          <tr><td>Тірана та Круя (Албанія)</td><td class="pr">55 €</td><td class="pr">45 €</td></tr>
+          <tr><td>Боко-Которська затока</td><td class="pr">45 €</td><td class="pr">35 €</td></tr>
+          <tr><td>Секрети південної Чорногорії</td><td class="pr">40 €</td><td class="pr">30 €</td></tr>
+          <tr><td>Дубровник у світлі вогнів</td><td class="pr">40 €</td><td class="pr">30 €</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Знижки та доплати</h2>
+      <div class="scroll-x">
+      <table class="tbl">
+        <tbody>
+          <tr><td>Діти 4–11,99 р. (окреме ліжко)</td><td class="pr" style="color:var(--ok)">−25 %</td></tr>
+          <tr><td>Діти 0–3,99 р. (без ліжка й харчування)</td><td class="pr">199 €</td></tr>
+          <tr><td>Одномісне розміщення (Single)</td><td class="pr">+80 %</td></tr>
+          <tr><td>Додаткове місце в автобусі</td><td class="pr">+150 €</td></tr>
+          <tr><td>Проїзд без проживання</td><td class="pr">220 €</td></tr>
+          <tr><td>На власному авто</td><td class="pr">+90 %</td></tr>
+          <tr><td>Місце у 2–4 рядах автобуса + плед</td><td class="pr">15 €</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Що взяти з собою</h2>
+      <div class="chips">
+        <span class="chip">Каремат</span><span class="chip">Купальник / рушник</span><span class="chip">В'єтнамки</span>
+        <span class="chip">Панама або капелюх</span><span class="chip">Сонцезахисний крем</span><span class="chip">Пляжне взуття</span><span class="chip">Фен</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Важливі умови</h2>
+      <details class="note"><summary>Гарантія від невиїзду <span class="ar">▾</span></summary><div class="body"><ul><li><b>30 €</b> — з поважної причини (гостра хвороба з госпіталізацією, COVID-19, смерть близького родича, серйозна травма) з підтвердженням.</li><li><b>50 €</b> — без пояснення причини.</li><li><b>60–100 €</b> — для туристів на власному авто.</li><li>Повернення коштів — при повідомленні щонайменше за 24 години до туру.</li></ul></div></details>
+      <details class="note"><summary>Організаційні правила <span class="ar">▾</span></summary><div class="body"><ul><li>Бути на місці посадки за 20 хвилин до години виїзду.</li><li>Учасники зобов'язані повертатися разом із групою.</li><li>Інфолист із деталями — за день до виїзду.</li><li>Оператор не відповідає за роботу консульських, митних і прикордонних служб, затори та погодні умови.</li></ul></div></details>
+    </div>
+  </div>
+
+  <aside class="book-wrap" id="book">
+    <div class="book">
+      <div class="price-row"><span class="from">від</span><span class="amt">€525</span><span class="per">/ особа</span></div>
+      <div class="rr">★ 4.9 · 124 відгуки · автобусний тур</div>
+      <form id="book-form" novalidate>
+        <label>Дата виїзду
+          <select id="b-date"><option>10.07 – 19.07.2026 · 7 ночей</option><option>17.07 – 26.07.2026 · 7 ночей</option><option>24.07 – 04.08.2026 · 9 ночей</option></select>
+        </label>
+        <div class="two">
+          <label>Осіб<input id="b-ppl" type="number" min="1" value="2"></label>
+          <label>Місто виїзду<select id="b-city"><option>Тернопіль</option><option>Львів</option><option>Івано-Франківськ</option><option>Луцьк</option><option>Рівне</option><option>Ужгород</option><option>Інше місто</option></select></label>
+        </div>
+        <label>Телефон<input id="b-phone" type="tel" placeholder="+380 __ ___ __ __" autocomplete="tel"></label>
+        <button type="submit" class="btn btn-primary btn-lg go">Забронювати</button>
+      </form>
+      <div class="assur">
+        <span><span class="m">✓</span> Гарантія від невиїзду</span>
+        <span><span class="m">✓</span> Передзвонимо протягом 1 хвилини</span>
+        <span><span class="m">✓</span> Оплата після підтвердження</span>
+      </div>
+      <button class="btn btn-ghost call" id="callme">Передзвоніть мені</button>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:14px"><span class="fish" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M3 12c3-5 9-6 13-4 1.5.7 3 2 4.5 4-1.5 2-3 3.3-4.5 4-4 2-10 1-13-4Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 8l3-2M20 16l3 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="10.5" r="1" fill="#fff"/></svg></span><span class="name"><b>ІХТІС</b> тревел</span></a>
+        <p style="max-width:32ch">Море, Європа та паломництва з виїздом із заходу України.</p>
+      </div>
+      <div><h5>Тур</h5><a href="#book">Забронювати</a><a href="index.html">Інші напрямки</a><a href="agents.html">Агентам</a></div>
+      <div><h5>Контакти</h5><p>Тернопіль, бул. Т. Шевченка, 25</p><a href="tel:+380960001122">(096) 000 11 22</a><a href="tel:+380770001155">(077) 000 11 55</a></div>
+    </div>
+    <div class="foot-bot"><span>© 2026 ІХТІС Тревел. Прототип нового сайту.</span><a href="index.html">← На головну</a></div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <div class="mp"><b>від €525</b> <span>/ особа</span></div>
+  <a href="#book" class="btn btn-primary">Забронювати</a>
+</div>
+
+<div class="toast" id="toast"><span class="ch"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 7" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span id="toast-msg">Заявку прийнято!</span></div>
+
+<script>
+(function(){
+  "use strict";
+  var toast=document.getElementById('toast'),tmr;
+  function showToast(m){document.getElementById('toast-msg').textContent=m;toast.classList.add('show');clearTimeout(tmr);tmr=setTimeout(function(){toast.classList.remove('show');},4200);}
+  document.getElementById('book-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var d=document.getElementById('b-date').value.split(' · ')[0];
+    showToast('Заявку на тур ('+d+') прийнято! Менеджер передзвонить протягом хвилини.');
+  });
+  document.getElementById('callme').addEventListener('click',function(){showToast('Дякуємо! Менеджер передзвонить вам найближчим часом.');});
+  var mbar=document.querySelector('.mbar .btn');
+  if(mbar)mbar.addEventListener('click',function(){setTimeout(function(){document.getElementById('b-phone').focus();},500);});
+})();
+</script>
+</body>
+</html>

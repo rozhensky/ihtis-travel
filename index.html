@@ -501,7 +501,7 @@
   document.getElementById('rail-next').addEventListener('click',function(){rail.scrollBy({left:340,behavior:'smooth'});});
   document.getElementById('rail-prev').addEventListener('click',function(){rail.scrollBy({left:-340,behavior:'smooth'});});
 
-  document.addEventListener('click',function(e){var h=e.target.closest('.heart');if(h){h.classList.toggle('on');e.preventDefault();}});
+  document.addEventListener('click',function(e){var h=e.target.closest('.heart');if(h){h.classList.toggle('on');e.preventDefault();return;}var card=e.target.closest('.pcard');if(card){location.href='tour.html';}});
 
   var toast=document.getElementById('toast'),tmr;
   function showToast(m){document.getElementById('toast-msg').textContent=m;toast.classList.add('show');clearTimeout(tmr);tmr=setTimeout(function(){toast.classList.remove('show');},4200);}
