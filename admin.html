@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yantis Travel — Адмінпанель · CRM</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+  :root{
+    --bg:#F4F6FB; --surface:#FFFFFF; --surface-2:#F2F5FA; --sidebar:#0E1420;
+    --ink:#10151C; --text:#333C49; --muted:#66707E; --faint:#9AA4B2;
+    --border:#E4E9F1; --border-2:#EDF0F6;
+    --primary:#1E6BFF; --primary-2:#0E52DA; --primary-soft:#EAF1FF;
+    --teal:#0E9E8E; --amber:#B7791F; --rose:#C0455B; --violet:#6D5AE6;
+    --ring:rgba(30,107,255,.28);
+    --shadow-sm:0 1px 2px rgba(16,21,28,.05),0 3px 10px rgba(16,21,28,.05);
+    --shadow-md:0 12px 32px rgba(16,21,28,.12);
+    --shadow-lg:0 24px 60px rgba(16,21,28,.18);
+    --r:12px; --r-lg:16px; --pill:999px;
+    --sans:"Geist","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    --disp:"Inter","Geist",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,"SF Mono","Menlo",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{margin:0;color:var(--ink);font-family:var(--disp);letter-spacing:-.02em;line-height:1.2}
+  a{color:inherit;text-decoration:none}
+  input,select,textarea,button{font-family:inherit}
+  ::selection{background:var(--primary);color:#fff}
+  :focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:6px}
+  .mono{font-family:var(--mono)}
+  .app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+
+  /* SIDEBAR */
+  .side{background:var(--sidebar);color:#fff;display:flex;flex-direction:column;padding:18px 14px;position:sticky;top:0;height:100vh}
+  .side .brand{display:flex;align-items:center;gap:10px;padding:6px 8px 18px}
+  .side .fish{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(155deg,#3E8BFF,#14B8A6)}
+  .side .brand b{font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:-.03em}
+  .side .brand .sub{font-size:10.5px;color:rgba(255,255,255,.45);font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .navlbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);padding:12px 10px 6px}
+  .side nav a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;color:rgba(255,255,255,.72);font-weight:500;font-size:13.5px;cursor:pointer;transition:.15s;margin-bottom:2px}
+  .side nav a:hover{background:rgba(255,255,255,.06);color:#fff}
+  .side nav a.on{background:var(--primary);color:#fff;box-shadow:0 8px 20px rgba(30,107,255,.35)}
+  .side nav a .ic{width:18px;height:18px;flex:none;opacity:.9}
+  .side nav a .badge{margin-left:auto;font-family:var(--mono);font-size:10.5px;background:rgba(255,255,255,.12);padding:2px 7px;border-radius:var(--pill)}
+  .side nav a.on .badge{background:rgba(255,255,255,.22)}
+  .side .me{margin-top:auto;display:flex;align-items:center;gap:10px;padding:12px 8px;border-top:1px solid rgba(255,255,255,.08)}
+  .side .me .av{width:32px;height:32px;border-radius:50%;background:linear-gradient(155deg,#3E8BFF,#14B8A6);flex:none}
+  .side .me b{font-size:13px;color:#fff;display:block}
+  .side .me span{font-size:11px;color:rgba(255,255,255,.45)}
+
+  /* MAIN */
+  .main{min-width:0;display:flex;flex-direction:column}
+  .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+    display:flex;align-items:center;gap:16px;padding:16px 28px}
+  .top h1{font-size:21px}
+  .top .crumb{font-size:12px;color:var(--muted);margin-bottom:3px}
+  .top .actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .view{padding:24px 28px 60px;max-width:1240px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-weight:600;font-size:13.5px;padding:10px 16px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:.15s;white-space:nowrap}
+  .btn-p{background:linear-gradient(180deg,var(--primary),var(--primary-2));color:#fff;box-shadow:0 8px 20px rgba(30,107,255,.25)}
+  .btn-p:hover{transform:translateY(-1px)}
+  .btn-g{background:var(--surface);color:var(--ink);border-color:var(--border)}
+  .btn-g:hover{border-color:var(--primary);color:var(--primary)}
+  .btn-sm{padding:7px 11px;font-size:12.5px}
+  .btn-icon{width:34px;height:34px;padding:0;border-radius:9px}
+  .btn-danger{color:var(--rose);background:var(--surface);border-color:var(--border)}
+  .btn-danger:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
+
+  /* CARDS / STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px;box-shadow:var(--shadow-sm)}
+  .stat .lbl{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .stat .lbl .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary)}
+  .stat .num{font-family:var(--disp);font-size:30px;font-weight:600;color:var(--ink);letter-spacing:-.03em;margin-top:12px}
+  .stat .delta{font-size:12px;color:var(--teal);margin-top:2px}
+
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden}
+  .panel .phd{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--border)}
+  .panel .phd h3{font-size:15px}
+  .panel .phd .r{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+
+  /* TABLE */
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:11px 18px;background:var(--surface-2);border-bottom:1px solid var(--border)}
+  tbody td{padding:13px 18px;border-bottom:1px solid var(--border-2);color:var(--text);vertical-align:middle}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr{cursor:pointer;transition:background .12s}
+  tbody tr:hover{background:var(--surface-2)}
+  td .t1{color:var(--ink);font-weight:600}
+  td .t2{color:var(--muted);font-size:12px;margin-top:2px}
+  td.num,th.num{text-align:right;font-family:var(--mono);font-weight:600;color:var(--ink);white-space:nowrap}
+  .thumb{width:44px;height:34px;border-radius:7px;object-fit:cover;flex:none}
+  .rowflex{display:flex;align-items:center;gap:12px}
+
+  .pill{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.03em;padding:4px 10px;border-radius:var(--pill);white-space:nowrap;display:inline-block}
+  .p-active,.p-confirmed{background:rgba(14,158,142,.12);color:#0B7F72}
+  .p-draft{background:rgba(154,164,178,.16);color:#697382}
+  .p-stop,.p-refused{background:rgba(192,69,91,.12);color:var(--rose)}
+  .p-new{background:rgba(30,107,255,.12);color:var(--primary)}
+  .p-work{background:rgba(109,90,230,.14);color:var(--violet)}
+  .p-booked{background:rgba(183,121,31,.14);color:var(--amber)}
+  .p-paid{background:rgba(14,158,142,.12);color:#0B7F72}
+
+  /* PIPELINE */
+  .pipe{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px}
+  .pcol{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 14px;box-shadow:var(--shadow-sm);cursor:pointer;transition:.15s}
+  .pcol:hover{border-color:var(--primary)}
+  .pcol.on{border-color:var(--primary);box-shadow:0 0 0 3px var(--ring)}
+  .pcol .n{font-family:var(--disp);font-size:24px;font-weight:600;color:var(--ink)}
+  .pcol .l{font-size:11.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:6px}
+  .pcol .l .d{width:8px;height:8px;border-radius:50%}
+
+  /* FORM */
+  .grid-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .fld{display:flex;flex-direction:column;gap:6px}
+  .fld.full{grid-column:1/-1}
+  .fld label{font-size:12px;font-weight:600;color:var(--ink)}
+  .fld input,.fld select,.fld textarea{font-size:13.5px;color:var(--ink);background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;width:100%;transition:.15s}
+  .fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--primary);background:var(--surface);box-shadow:0 0 0 3px var(--ring)}
+  .fld textarea{resize:vertical;min-height:72px;font-family:inherit}
+  .fld .hint{font-size:11px;color:var(--faint)}
+  .section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);padding:20px;margin-bottom:16px}
+  .section>h3{font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:9px}
+  .section>.sd{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+  .section .snum{width:24px;height:24px;border-radius:7px;background:var(--primary-soft);color:var(--primary);font-family:var(--mono);font-size:11px;font-weight:700;display:grid;place-items:center}
+
+  /* REPEATABLE ROWS */
+  .rows{display:flex;flex-direction:column;gap:9px}
+  .rr{display:grid;gap:9px;align-items:end}
+  .rr.dep{grid-template-columns:1.1fr 1.1fr .7fr .8fr .7fr auto}
+  .rr.board{grid-template-columns:1.4fr .7fr auto}
+  .rr.prog{grid-template-columns:.5fr 1.2fr 2fr auto}
+  .rr.exc{grid-template-columns:2fr .8fr .8fr auto}
+  .rr input,.rr select{font-size:13px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:9px 10px;width:100%}
+  .rr input:focus,.rr select:focus{outline:none;border-color:var(--primary);background:var(--surface)}
+  .rr .rh{font-size:10.5px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
+  .rr .del{width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--rose);cursor:pointer;display:grid;place-items:center;flex:none}
+  .rr .del:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
+  .addrow{margin-top:11px;background:transparent;border:1px dashed var(--border-strong,#D3DBE7);color:var(--primary);font-weight:600;font-size:12.5px;padding:9px 14px;border-radius:9px;cursor:pointer}
+  .addrow:hover{background:var(--primary-soft)}
+
+  /* PREVIEW */
+  .prev{position:sticky;top:88px}
+  .prev-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-md)}
+  .prev-card .img{height:150px;background-size:cover;background-position:center;background-color:var(--surface-2);position:relative}
+  .prev-card .img .badge{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:10px;font-weight:700;background:#C6ED4A;color:#10151C;padding:4px 9px;border-radius:var(--pill)}
+  .prev-card .bd{padding:15px}
+  .prev-card .bd h4{font-size:16px}
+  .prev-card .bd .m{font-size:12px;color:var(--muted);margin-top:4px}
+  .prev-card .bd .pr{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:16px;margin-top:12px}
+  .prev-note{font-size:11.5px;color:var(--faint);margin-top:12px;text-align:center}
+
+  /* MODAL */
+  .ov{position:fixed;inset:0;background:rgba(16,21,28,.45);backdrop-filter:blur(2px);z-index:60;display:none;align-items:flex-start;justify-content:center;padding:60px 20px;overflow:auto}
+  .ov.open{display:flex}
+  .modal{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);width:100%;max-width:520px;overflow:hidden}
+  .modal .mhd{display:flex;align-items:center;padding:18px 20px;border-bottom:1px solid var(--border)}
+  .modal .mhd h3{font-size:16px}
+  .modal .mhd .x{margin-left:auto;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;display:grid;place-items:center;color:var(--muted)}
+  .modal .mbd{padding:20px}
+  .modal .mft{padding:16px 20px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;background:var(--surface-2)}
+
+  .empty{padding:40px;text-align:center;color:var(--muted)}
+  .flexlist{display:flex;flex-direction:column}
+  .li{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--border-2)}
+  .li:last-child{border-bottom:0}
+  .li .t1{color:var(--ink);font-weight:600;font-size:13.5px}
+  .li .t2{color:var(--muted);font-size:12px}
+  .li .r{margin-left:auto;text-align:right}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(120px);background:var(--sidebar);color:#fff;padding:13px 20px;border-radius:var(--pill);box-shadow:var(--shadow-lg);font-size:13.5px;font-weight:500;z-index:200;display:flex;align-items:center;gap:9px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .toast .ch{width:20px;height:20px;border-radius:50%;background:var(--teal);display:grid;place-items:center}
+
+  @media (max-width:1080px){.stats{grid-template-columns:1fr 1fr}.pipe{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:1fr}.editor-grid{grid-template-columns:1fr!important}.prev{position:static!important}}
+  @media (max-width:720px){
+    .app{grid-template-columns:1fr}
+    .side{position:fixed;left:0;top:0;z-index:70;transform:translateX(-100%);transition:transform .3s;width:248px}
+    .side.open{transform:none}
+    .grid-form,.stats{grid-template-columns:1fr}
+    .rr.dep,.rr.prog,.rr.exc,.rr.board{grid-template-columns:1fr 1fr}
+    .burger-a{display:grid!important}
+  }
+  .burger-a{display:none;width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surface);cursor:pointer;place-items:center}
+</style>
+
+<div class="app">
+  <aside class="side" id="side">
+    <div class="brand">
+      <span class="fish"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 12c3-5 9-6 13-4 1.5.7 3 2 4.5 4-1.5 2-3 3.3-4.5 4-4 2-10 1-13-4Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 8l3-2M20 16l3 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="10.5" r="1" fill="#fff"/></svg></span>
+      <div><b>Yantis Travel</b><div class="sub">Адмін · CRM</div></div>
+    </div>
+    <div class="navlbl">Керування</div>
+    <nav id="nav">
+      <a data-nav="dashboard" class="on"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M4 13h7V4H4v9Zm0 7h7v-5H4v5Zm9 0h7v-9h-7v9Zm0-16v5h7V4h-7Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>Дашборд</a>
+      <a data-nav="destinations"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 21s7-5.2 7-11a7 7 0 10-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.7"/></svg></span>Напрямки <span class="badge" id="b-dest">0</span></a>
+      <a data-nav="tours"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>Тури <span class="badge" id="b-tours">0</span></a>
+      <a data-nav="leads"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 19a5.5 5.5 0 0111 0M16 8h5M18.5 5.5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>Заявки · CRM <span class="badge" id="b-leads">0</span></a>
+    </nav>
+    <div class="navlbl">Система</div>
+    <nav>
+      <a data-nav="agents"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M16 11a3 3 0 100-6 3 3 0 000 6ZM8 12a3 3 0 100-6 3 3 0 000 6ZM2 20c0-3 2.7-5 6-5m14 5c0-3-2.7-5-6-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>Агенти</a>
+    </nav>
+    <div class="me"><span class="av"></span><div><b>Ольга М.</b><span>Менеджер · Тернопіль</span></div></div>
+  </aside>
+
+  <div class="main">
+    <div class="top">
+      <button class="burger-a" id="burger"><svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      <div><div class="crumb" id="crumb">Адмінпанель</div><h1 id="title">Дашборд</h1></div>
+      <div class="actions" id="actions"></div>
+    </div>
+    <div class="view" id="view"></div>
+  </div>
+</div>
+
+<div class="ov" id="ov"></div>
+<div class="toast" id="toast"><span class="ch"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span id="toast-msg"></span></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var money=function(n){return n||n===0?'€'+n:'—'};
+
+/* ---------- SEED + STORAGE ---------- */
+var SEED={
+  destinations:[
+    {id:'d1',name:'Чорногорія',region:'Адріатичне море',type:'sea',status:'active',img:'assets/img/montenegro.jpg'},
+    {id:'d2',name:'Хорватія',region:'Адріатичне море',type:'sea',status:'active',img:'assets/img/croatia.jpg'},
+    {id:'d3',name:'Греція',region:'Егейське море',type:'sea',status:'active',img:'assets/img/greece.jpg'},
+    {id:'d4',name:'Італія',region:'Адріатика',type:'sea',status:'active',img:'assets/img/italy.jpg'},
+    {id:'d5',name:'Албанія',region:'Іонічне море',type:'sea',status:'active',img:'assets/img/albania.jpg'},
+    {id:'d6',name:'Іспанія',region:'Середземне море',type:'sea',status:'draft',img:'assets/img/spain.jpg'},
+    {id:'d7',name:'Меджугор\'є',region:'Боснія і Герцеговина',type:'pilgrimage',status:'active',img:'assets/img/medjugorje.jpg'},
+    {id:'d8',name:'Ізраїль',region:'Святі місця',type:'pilgrimage',status:'active',img:'assets/img/israel.jpg'}
+  ],
+  tours:[
+    {id:'t1',name:'Будва «Серце Чорногорії»',dest:'Чорногорія',type:'sea',status:'active',rating:4.9,priceFrom:525,
+     hotel:'Hotel POZZO',stars:4,meal:'Напівпансіон (сніданки + вечері)',line:'2-га лінія від моря',transport:'Автобус єврокласу',
+     img:'assets/img/montenegro.jpg',gallery:'assets/img/montenegro.jpg\nassets/img/sveti_stefan.jpg\nassets/img/kotor.jpg\nassets/img/perast.jpg',
+     desc:'Морський відпочинок на Адріатиці в самому серці Чорногорії.',
+     departures:[
+       {from:'10.07.2026',to:'19.07.2026',nights:7,price:525,seats:8},
+       {from:'17.07.2026',to:'26.07.2026',nights:7,price:525,seats:14},
+       {from:'24.07.2026',to:'04.08.2026',nights:9,price:595,seats:22}
+     ],
+     boarding:[{city:'Кременець',time:'04:30'},{city:'Тернопіль',time:'05:30'},{city:'Львів',time:'08:00'},{city:'Івано-Франківськ',time:'07:00'},{city:'Луцьк',time:'02:00'},{city:'Рівне',time:'04:00'},{city:'Ужгород',time:'12:00'}],
+     program:[
+       {d:'1',t:'Виїзд з України',x:'Виїзд із вказаних міст, проходження кордону, нічний переїзд.'},
+       {d:'2',t:'Прибуття та заселення',x:'Прибуття в Будву о 14:00, заселення, відпочинок.'},
+       {d:'3–8',t:'Відпочинок на морі',x:'Вільний відпочинок + факультативні екскурсії.'},
+       {d:'9',t:'Виселення та виїзд',x:'Виселення до 10:00, нічний переїзд в Україну.'}
+     ],
+     included:'Переїзд автобусом єврокласу\nСупровід керівника групи\nПроживання в готелі POZZO ★★★★\nСніданки (шведська лінія) та вечері\nТрансфери з Ів.-Франківської, Волинської, Рівненської обл.',
+     notIncluded:'Депозит на факультативи — 35€\nМіський податок — 2€/ніч\nПаливний збір — 10€\nМедичне страхування\nХарчування поза готелем',
+     excursions:[{n:'Оглядова у Будві',a:15,c:10},{n:'Катер по Скадарському озеру',a:50,c:35},{n:'Каньйони Тара та Морача',a:60,c:50},{n:'Цетинє та Ловчен',a:40,c:30},{n:'Боко-Которська затока',a:45,c:35},{n:'Дубровник у світлі вогнів',a:40,c:30}],
+     discounts:'Діти 4–11,99 (окреме ліжко): −25%\nДіти 0–3,99 (без ліжка): 199€\nОдномісне (Single): +80%\nНа власному авто: +90%'},
+    {id:'t2',name:'Хорватія · Hotel RIVA',dest:'Хорватія',type:'sea',status:'active',rating:4.8,priceFrom:395,hotel:'Hotel RIVA',stars:3,meal:'Сніданки',line:'1-ша лінія',transport:'Автобус єврокласу',img:'assets/img/croatia.jpg',gallery:'assets/img/croatia.jpg',desc:'Адріатичне узбережжя Хорватії.',departures:[{from:'05.08.2026',to:'15.08.2026',nights:8,price:395,seats:11}],boarding:[{city:'Львів',time:'08:00'}],program:[],included:'',notIncluded:'',excursions:[],discounts:''},
+    {id:'t3',name:'Греція · Егейське море',dest:'Греція',type:'sea',status:'active',rating:4.9,priceFrom:399,hotel:'Coral Hotel',stars:3,meal:'Сніданки',line:'2-га лінія',transport:'Переліт + готель',img:'assets/img/greece.jpg',gallery:'assets/img/greece.jpg',desc:'Відпочинок на Егейському морі.',departures:[{from:'12.07.2026',to:'21.07.2026',nights:9,price:399,seats:6}],boarding:[],program:[],included:'',notIncluded:'',excursions:[],discounts:''},
+    {id:'t4',name:'Меджугор\'є · паломництво',dest:'Меджугор\'є',type:'pilgrimage',status:'draft',rating:5.0,priceFrom:0,hotel:'Пансіон',stars:3,meal:'Напівпансіон',line:'—',transport:'Автобус',img:'assets/img/medjugorje.jpg',gallery:'assets/img/medjugorje.jpg',desc:'Паломництво з духовним супроводом.',departures:[{from:'22.08.2026',to:'29.08.2026',nights:6,price:0,seats:30}],boarding:[],program:[],included:'',notIncluded:'',excursions:[],discounts:''}
+  ],
+  leads:[
+    {id:'l1',name:'Марія Ковальчук',phone:'+380 67 123 45 67',tour:'Будва «Серце Чорногорії»',date:'10.07.2026',people:4,city:'Тернопіль',status:'new',manager:'Ольга М.',src:'сайт',note:'Родина з двома дітьми, цікавить окреме ліжко.'},
+    {id:'l2',name:'Андрій Бондар',phone:'+380 50 987 65 43',tour:'Хорватія · Hotel RIVA',date:'05.08.2026',people:2,city:'Львів',status:'work',manager:'Ольга М.',src:'сайт',note:''},
+    {id:'l3',name:'ТА «Вояж» (агент)',phone:'+380 96 111 22 33',tour:'Будва «Серце Чорногорії»',date:'17.07.2026',people:6,city:'Івано-Франківськ',status:'booked',manager:'Ігор П.',src:'кабінет агента',note:'Група 6 осіб, потрібні ваучери.'},
+    {id:'l4',name:'Оксана Мельник',phone:'+380 63 444 55 66',tour:'Греція · Егейське море',date:'12.07.2026',people:2,city:'Київ',status:'paid',manager:'Ольга М.',src:'дзвінок',note:'Оплатила аванс 50%.'},
+    {id:'l5',name:'Петро Гриценко',phone:'+380 68 777 88 99',tour:'Будва «Серце Чорногорії»',date:'24.07.2026',people:3,city:'Рівне',status:'confirmed',manager:'Ігор П.',src:'сайт',note:'Підтверджено, ваучер надіслано.'},
+    {id:'l6',name:'Наталія Шевчук',phone:'+380 99 222 33 44',tour:'Меджугор\'є · паломництво',date:'22.08.2026',people:1,city:'Ужгород',status:'work',manager:'Ольга М.',src:'месенджер',note:''},
+    {id:'l7',name:'Ігор Савчук',phone:'+380 73 555 66 77',tour:'Будва «Серце Чорногорії»',date:'10.07.2026',people:2,city:'Львів',status:'refused',manager:'Ольга М.',src:'сайт',note:'Передумав — обрав інші дати.'},
+    {id:'l8',name:'Тетяна Романюк',phone:'+380 66 888 99 00',tour:'Хорватія · Hotel RIVA',date:'05.08.2026',people:5,city:'Луцьк',status:'new',manager:'—',src:'сайт',note:'Компанія друзів.'}
+  ],
+  agents:[
+    {id:'a1',name:'ТА «Вояж»',city:'Івано-Франківськ',phone:'+380 96 111 22 33',commission:'10%',groups:3,status:'active'},
+    {id:'a2',name:'ТА «Мандрівник»',city:'Львів',phone:'+380 67 333 44 55',commission:'12%',groups:1,status:'active'},
+    {id:'a3',name:'ФОП Гарна Подорож',city:'Тернопіль',phone:'+380 50 666 77 88',commission:'10%',groups:0,status:'pending'}
+  ]
+};
+var DB;
+try{DB=JSON.parse(localStorage.getItem('yantis-crm'))}catch(e){}
+if(!DB||!DB.tours){DB=JSON.parse(JSON.stringify(SEED))}
+function save(){try{localStorage.setItem('yantis-crm',JSON.stringify(DB))}catch(e){}}
+function uid(p){return p+Math.random().toString(36).slice(2,8)}
+
+var STATUS={new:'Нова',work:'В роботі',booked:'Бронь',paid:'Оплата',confirmed:'Підтв.',refused:'Відмова'};
+var STATUS_DOT={new:'#1E6BFF',work:'#6D5AE6',booked:'#B7791F',paid:'#0E9E8E',confirmed:'#0E9E8E',refused:'#C0455B'};
+var TYPE={sea:'Море',excursions:'Екскурсії',pilgrimage:'Паломництво',camps:'Табори'};
+
+/* ---------- TOAST / MODAL ---------- */
+var toast=$('#toast'),tmr;
+function notify(m){$('#toast-msg').textContent=m;toast.classList.add('show');clearTimeout(tmr);tmr=setTimeout(function(){toast.classList.remove('show')},3200)}
+var ov=$('#ov');
+function modal(title,body,onSave,saveLbl){
+  ov.innerHTML='<div class="modal"><div class="mhd"><h3>'+esc(title)+'</h3><button class="x" data-close>✕</button></div><div class="mbd">'+body+'</div><div class="mft"><button class="btn btn-g" data-close>Скасувати</button><button class="btn btn-p" id="m-save">'+(saveLbl||'Зберегти')+'</button></div></div>';
+  ov.classList.add('open');
+  $('#m-save').onclick=function(){ if(onSave()!==false){ov.classList.remove('open')} };
+}
+ov.addEventListener('click',function(e){if(e.target===ov||e.target.closest('[data-close]'))ov.classList.remove('open')});
+
+/* ---------- ROUTER ---------- */
+var VIEWS={};
+function badges(){$('#b-dest').textContent=DB.destinations.length;$('#b-tours').textContent=DB.tours.length;$('#b-leads').textContent=DB.leads.filter(function(l){return l.status!=='confirmed'&&l.status!=='refused'}).length}
+function go(view,arg){
+  document.querySelectorAll('#nav a,[data-nav]').forEach(function(a){a.classList.toggle('on',a.dataset.nav===view)});
+  $('#actions').innerHTML='';
+  (VIEWS[view]||VIEWS.dashboard)(arg);
+  badges();save();$('#side').classList.remove('open');window.scrollTo(0,0);
+}
+document.querySelectorAll('[data-nav]').forEach(function(a){a.addEventListener('click',function(){go(a.dataset.nav)})});
+$('#burger').onclick=function(){$('#side').classList.toggle('open')};
+
+/* ---------- DASHBOARD ---------- */
+VIEWS.dashboard=function(){
+  $('#title').textContent='Дашборд';$('#crumb').textContent='Адмінпанель';
+  var active=DB.tours.filter(function(t){return t.status==='active'}).length;
+  var newL=DB.leads.filter(function(l){return l.status==='new'}).length;
+  var deps=[];DB.tours.forEach(function(t){(t.departures||[]).forEach(function(d){deps.push({t:t.name,d:d})})});
+  var conv=Math.round(DB.leads.filter(function(l){return l.status==='confirmed'||l.status==='paid'}).length/DB.leads.length*100);
+  var recent=DB.leads.slice().reverse().slice(0,6);
+  $('#view').innerHTML=
+    '<div class="stats">'+
+    stat('Активні тури',active,'з '+DB.tours.length+' усього','M4 7h16M4 12h16M4 17h10')+
+    stat('Нові заявки',newL,'потребують дзвінка','M12 3v18M8 8h8')+
+    stat('Найближчі виїзди',deps.length,'заплановано','M8 2v4M16 2v4M3 9h18M5 5h14v15H5z')+
+    stat('Конверсія',conv+'%','оплата / підтверджено','M4 19l5-5 4 4 7-8')+
+    '</div>'+
+    '<div class="grid2">'+
+      '<div class="panel"><div class="phd"><h3>Останні заявки</h3><div class="r"><button class="btn btn-g btn-sm" data-nav="leads">Усі заявки →</button></div></div>'+
+        '<table><thead><tr><th>Клієнт</th><th>Тур</th><th>Дата</th><th>Статус</th></tr></thead><tbody>'+
+        recent.map(function(l){return '<tr data-lead="'+l.id+'"><td><div class="t1">'+esc(l.name)+'</div><div class="t2">'+esc(l.phone)+'</div></td><td>'+esc(l.tour)+'</td><td class="mono">'+esc(l.date)+'</td><td><span class="pill p-'+l.status+'">'+STATUS[l.status]+'</span></td></tr>'}).join('')+
+        '</tbody></table></div>'+
+      '<div class="panel"><div class="phd"><h3>Найближчі виїзди</h3></div><div class="flexlist">'+
+        deps.slice(0,7).map(function(o){return '<div class="li"><div><div class="t1">'+esc(o.t)+'</div><div class="t2">'+esc(o.d.nights)+' ночей · вільно '+esc(o.d.seats)+' місць</div></div><div class="r"><div class="mono t1">'+esc(o.d.from)+'</div><div class="t2">'+money(o.d.price)+'</div></div></div>'}).join('')+
+      '</div></div>'+
+    '</div>';
+  bindLeadRows();
+  $('#view').querySelectorAll('[data-nav]').forEach(function(a){a.addEventListener('click',function(){go(a.dataset.nav)})});
+};
+function stat(l,n,d,path){return '<div class="stat"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="'+path+'" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'+l+'</div><div class="num">'+n+'</div><div class="delta">'+d+'</div></div>'}
+
+/* ---------- DESTINATIONS ---------- */
+VIEWS.destinations=function(){
+  $('#title').textContent='Напрямки';$('#crumb').textContent='Керування · Довідник країн';
+  $('#actions').innerHTML='<button class="btn btn-p" id="add-dest">+ Напрямок</button>';
+  $('#add-dest').onclick=function(){destModal()};
+  $('#view').innerHTML='<div class="panel"><table><thead><tr><th>Напрямок</th><th>Регіон / море</th><th>Тип</th><th>Турів</th><th>Статус</th><th></th></tr></thead><tbody>'+
+    DB.destinations.map(function(d){var cnt=DB.tours.filter(function(t){return t.dest===d.name}).length;
+      return '<tr data-dest="'+d.id+'"><td><div class="rowflex"><img class="thumb" src="'+esc(d.img)+'" alt=""><span class="t1">'+esc(d.name)+'</span></div></td><td>'+esc(d.region)+'</td><td>'+(TYPE[d.type]||d.type)+'</td><td class="num">'+cnt+'</td><td><span class="pill p-'+d.status+'">'+(d.status==='active'?'Активний':'Чернетка')+'</span></td><td class="num"><button class="btn btn-g btn-sm" data-edit="'+d.id+'">Ред.</button></td></tr>'}).join('')+
+    '</tbody></table></div>';
+  $('#view').querySelectorAll('[data-edit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();destModal(b.dataset.edit)}});
+  $('#view').querySelectorAll('[data-dest]').forEach(function(r){r.onclick=function(){destModal(r.dataset.dest)}});
+};
+function destModal(id){
+  var d=id?DB.destinations.filter(function(x){return x.id===id})[0]:{name:'',region:'',type:'sea',status:'active',img:''};
+  modal(id?'Редагувати напрямок':'Новий напрямок',
+    '<div class="grid-form"><div class="fld full"><label>Назва країни</label><input id="d-name" value="'+esc(d.name)+'" placeholder="Чорногорія"></div>'+
+    '<div class="fld"><label>Регіон / море</label><input id="d-region" value="'+esc(d.region)+'" placeholder="Адріатичне море"></div>'+
+    '<div class="fld"><label>Тип</label><select id="d-type">'+opts(TYPE,d.type)+'</select></div>'+
+    '<div class="fld"><label>Статус</label><select id="d-status"><option value="active"'+(d.status==='active'?' selected':'')+'>Активний</option><option value="draft"'+(d.status==='draft'?' selected':'')+'>Чернетка</option></select></div>'+
+    '<div class="fld"><label>Фото (шлях)</label><input id="d-img" value="'+esc(d.img)+'" placeholder="assets/img/...jpg"></div></div>',
+    function(){
+      var o={name:$('#d-name').value.trim(),region:$('#d-region').value.trim(),type:$('#d-type').value,status:$('#d-status').value,img:$('#d-img').value.trim()};
+      if(!o.name){notify('Вкажіть назву');return false}
+      if(id){Object.assign(d,o)}else{o.id=uid('d');DB.destinations.push(o)}
+      save();go('destinations');notify(id?'Напрямок оновлено':'Напрямок додано');
+    });
+}
+function opts(map,cur){return Object.keys(map).map(function(k){return '<option value="'+k+'"'+(k===cur?' selected':'')+'>'+map[k]+'</option>'}).join('')}
+
+/* ---------- TOURS LIST ---------- */
+VIEWS.tours=function(){
+  $('#title').textContent='Тури';$('#crumb').textContent='Керування · Каталог турів';
+  $('#actions').innerHTML='<button class="btn btn-p" id="add-tour">+ Новий тур</button>';
+  $('#add-tour').onclick=function(){go('editor','new')};
+  $('#view').innerHTML='<div class="panel"><table><thead><tr><th>Тур</th><th>Напрямок</th><th>Готель</th><th>Дати</th><th class="num">Ціна від</th><th>Статус</th><th></th></tr></thead><tbody>'+
+    DB.tours.map(function(t){return '<tr data-tour="'+t.id+'"><td><div class="rowflex"><img class="thumb" src="'+esc(t.img)+'" alt=""><div><div class="t1">'+esc(t.name)+'</div><div class="t2">★ '+esc(t.rating)+' · '+(TYPE[t.type]||t.type)+'</div></div></div></td><td>'+esc(t.dest)+'</td><td>'+esc(t.hotel)+' '+stars(t.stars)+'</td><td class="mono">'+(t.departures||[]).length+' дат</td><td class="num">'+money(t.priceFrom)+'</td><td><span class="pill p-'+t.status+'">'+(t.status==='active'?'Активний':t.status==='stop'?'Стоп-продаж':'Чернетка')+'</span></td><td class="num"><button class="btn btn-g btn-sm" data-edit="'+t.id+'">Налаштувати</button></td></tr>'}).join('')+
+    '</tbody></table></div>';
+  $('#view').querySelectorAll('[data-tour]').forEach(function(r){r.onclick=function(){go('editor',r.dataset.tour)}});
+  $('#view').querySelectorAll('[data-edit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();go('editor',b.dataset.edit)}});
+};
+function stars(n){var s='';for(var i=0;i<(n||0);i++)s+='★';return '<span style="color:#B7791F">'+s+'</span>'}
+
+/* ---------- TOUR EDITOR (configurable page) ---------- */
+VIEWS.editor=function(arg){
+  var isNew=arg==='new';
+  var t=isNew?{id:uid('t'),name:'',dest:DB.destinations[0]?DB.destinations[0].name:'',type:'sea',status:'draft',rating:4.8,priceFrom:0,hotel:'',stars:4,meal:'',line:'',transport:'Автобус єврокласу',img:'',gallery:'',desc:'',departures:[],boarding:[],program:[],included:'',notIncluded:'',excursions:[],discounts:''}:JSON.parse(JSON.stringify(DB.tours.filter(function(x){return x.id===arg})[0]));
+  $('#title').textContent=isNew?'Новий тур':'Налаштування туру';
+  $('#crumb').textContent='Тури · '+(t.name||'без назви');
+  $('#actions').innerHTML='<button class="btn btn-g" id="e-cancel">Скасувати</button><a class="btn btn-g" href="tour.html" target="_blank">Переглянути сторінку ↗</a><button class="btn btn-p" id="e-save">Зберегти тур</button>';
+  var destOpts=DB.destinations.map(function(d){return '<option'+(d.name===t.dest?' selected':'')+'>'+esc(d.name)+'</option>'}).join('');
+  $('#view').innerHTML=
+   '<div class="editor-grid" style="display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start">'+
+    '<div>'+
+      sec(1,'Основне','Як тур називається й де показується')+
+        '<div class="grid-form">'+
+        fld('full','Назва туру','<input id="e-name" value="'+esc(t.name)+'" placeholder="Будва «Серце Чорногорії»">')+
+        fld('','Напрямок','<select id="e-dest">'+destOpts+'</select>')+
+        fld('','Тип','<select id="e-type">'+opts(TYPE,t.type)+'</select>')+
+        fld('','Статус','<select id="e-status"><option value="active"'+sel(t.status,'active')+'>Активний</option><option value="draft"'+sel(t.status,'draft')+'>Чернетка</option><option value="stop"'+sel(t.status,'stop')+'>Стоп-продаж</option></select>')+
+        fld('','Рейтинг','<input id="e-rating" type="number" step="0.1" min="0" max="5" value="'+esc(t.rating)+'">')+
+        fld('full','Короткий опис','<textarea id="e-desc" placeholder="1–2 речення для картки й шапки">'+esc(t.desc)+'</textarea>')+
+        '</div></div>'+
+      sec(2,'Готель і транспорт','Швидкі факти на сторінці')+
+        '<div class="grid-form">'+
+        fld('','Готель','<input id="e-hotel" value="'+esc(t.hotel)+'">')+
+        fld('','Зірок','<select id="e-stars"><option '+sel(t.stars,3)+'>3</option><option '+sel(t.stars,4)+'>4</option><option '+sel(t.stars,5)+'>5</option></select>')+
+        fld('','Харчування','<input id="e-meal" value="'+esc(t.meal)+'">')+
+        fld('','Лінія від моря','<input id="e-line" value="'+esc(t.line)+'">')+
+        fld('','Транспорт','<input id="e-transport" value="'+esc(t.transport)+'">')+
+        fld('','Ціна від, €','<input id="e-price" type="number" min="0" value="'+esc(t.priceFrom)+'">')+
+        fld('full','Головне фото','<input id="e-img" value="'+esc(t.img)+'" placeholder="assets/img/montenegro.jpg">')+
+        fld('full','Галерея (по одному фото в рядку)','<textarea id="e-gallery">'+esc(t.gallery)+'</textarea>')+
+        '</div></div>'+
+      sec(3,'Дати виїздів','Кожна дата — окремі змінні: ночі, ціна, вільні місця')+
+        '<div class="rows" id="rows-dep"></div><button class="addrow" data-add="dep">+ Додати дату виїзду</button></div>'+
+      sec(4,'Точки посадки','Місто і час виїзду')+
+        '<div class="rows" id="rows-board"></div><button class="addrow" data-add="board">+ Додати місто</button></div>'+
+      sec(5,'Програма по днях','')+
+        '<div class="rows" id="rows-prog"></div><button class="addrow" data-add="prog">+ Додати день</button></div>'+
+      sec(6,'Що входить / не входить','По одному пункту в рядку')+
+        '<div class="grid-form">'+fld('','Входить у вартість','<textarea id="e-inc" style="min-height:120px">'+esc(t.included)+'</textarea>')+fld('','Не входить','<textarea id="e-notinc" style="min-height:120px">'+esc(t.notIncluded)+'</textarea>')+'</div></div>'+
+      sec(7,'Факультативні екскурсії','Назва + ціна дорослий / дитина')+
+        '<div class="rows" id="rows-exc"></div><button class="addrow" data-add="exc">+ Додати екскурсію</button></div>'+
+      sec(8,'Знижки та доплати','По одному пункту в рядку')+
+        '<div class="grid-form"><div class="fld full"><textarea id="e-disc" style="min-height:100px">'+esc(t.discounts)+'</textarea></div></div></div>'+
+    '</div>'+
+    '<div class="prev"><div class="prev-card"><div class="img" id="pv-img"><span class="badge" id="pv-badge">🔥 ХІТ</span></div><div class="bd"><h4 id="pv-name">Назва туру</h4><div class="m" id="pv-meta">готель · факти</div><div class="pr" id="pv-price">€—</div></div></div><div class="prev-note">Так виглядатиме картка на сайті.<br>Сторінка туру генерується з цих полів.</div></div>'+
+   '</div>';
+
+  // repeatable rows
+  var R={dep:t.departures,board:t.boarding,prog:t.program,exc:t.excursions};
+  renderRows('dep',R.dep);renderRows('board',R.board);renderRows('prog',R.prog);renderRows('exc',R.exc);
+  $('#view').querySelectorAll('[data-add]').forEach(function(b){b.onclick=function(){addRow(b.dataset.add)}});
+  $('#view').addEventListener('input',updatePreview);
+  updatePreview();
+
+  $('#e-cancel').onclick=function(){go('tours')};
+  $('#e-save').onclick=function(){
+    t.name=$('#e-name').value.trim(); if(!t.name){notify('Вкажіть назву туру');return}
+    t.dest=$('#e-dest').value;t.type=$('#e-type').value;t.status=$('#e-status').value;t.rating=parseFloat($('#e-rating').value)||0;
+    t.desc=$('#e-desc').value;t.hotel=$('#e-hotel').value;t.stars=parseInt($('#e-stars').value);t.meal=$('#e-meal').value;t.line=$('#e-line').value;t.transport=$('#e-transport').value;
+    t.priceFrom=parseInt($('#e-price').value)||0;t.img=$('#e-img').value.trim();t.gallery=$('#e-gallery').value;
+    t.included=$('#e-inc').value;t.notIncluded=$('#e-notinc').value;t.discounts=$('#e-disc').value;
+    t.departures=readRows('dep');t.boarding=readRows('board');t.program=readRows('prog');t.excursions=readRows('exc');
+    var i=DB.tours.map(function(x){return x.id}).indexOf(t.id);
+    if(i>=0)DB.tours[i]=t;else DB.tours.push(t);
+    save();go('tours');notify(isNew?'Тур створено':'Тур збережено');
+  };
+
+  function updatePreview(){
+    var img=$('#e-img').value||'assets/img/montenegro.jpg';
+    $('#pv-img').style.backgroundImage='url('+img+')';
+    $('#pv-name').textContent=$('#e-name').value||'Назва туру';
+    $('#pv-meta').textContent=($('#e-hotel').value||'Готель')+' '+stripTags(stars(parseInt($('#e-stars').value)))+' · ★ '+($('#e-rating').value||'—');
+    var p=$('#e-price').value;$('#pv-price').innerHTML=p&&p!=='0'?'від €'+p+' <span style="color:var(--muted);font-weight:500;font-size:11px">/ особа</span>':'за запитом';
+    $('#pv-badge').style.display=$('#e-status').value==='active'?'block':'none';
+  }
+};
+function stripTags(s){return s.replace(/<[^>]+>/g,'')}
+function sec(n,t,d){return '<div class="section"><h3><span class="snum">'+n+'</span>'+t+'</h3>'+(d?'<div class="sd">'+d+'</div>':'')}
+function fld(cls,l,inner){return '<div class="fld '+cls+'"><label>'+l+'</label>'+inner+'</div>'}
+function sel(a,b){return a==b?' selected':''}
+
+var ROWDEF={
+  dep:{cls:'dep',head:['Дата від','Дата до','Ночей','Ціна €','Місць'],f:function(r){r=r||{};return inp('from',r.from,'10.07.2026')+inp('to',r.to,'19.07.2026')+inp('nights',r.nights,'7','number')+inp('price',r.price,'525','number')+inp('seats',r.seats,'10','number')}},
+  board:{cls:'board',head:['Місто','Час',''],f:function(r){r=r||{};return inp('city',r.city,'Тернопіль')+inp('time',r.time,'05:30')}},
+  prog:{cls:'prog',head:['День','Заголовок','Опис'],f:function(r){r=r||{};return inp('d',r.d,'1')+inp('t',r.t,'Виїзд')+inp('x',r.x,'Опис дня')}},
+  exc:{cls:'exc',head:['Екскурсія','Дорослий €','Дитина €'],f:function(r){r=r||{};return inp('n',r.n,'Оглядова')+inp('a',r.a,'15','number')+inp('c',r.c,'10','number')}}
+};
+function inp(k,v,ph,type){return '<div><input data-k="'+k+'" type="'+(type||'text')+'" value="'+esc(v==null?'':v)+'" placeholder="'+ph+'"></div>'}
+function rowHTML(kind,r){var def=ROWDEF[kind];return '<div class="rr '+def.cls+'" data-row>'+def.f(r)+'<button class="del" data-delrow type="button">✕</button></div>'}
+function renderRows(kind,arr){var c=$('#rows-'+kind);c.innerHTML='';(arr&&arr.length?arr:[]).forEach(function(r){c.insertAdjacentHTML('beforeend',rowHTML(kind,r))});bindDel(c)}
+function addRow(kind){$('#rows-'+kind).insertAdjacentHTML('beforeend',rowHTML(kind,null));bindDel($('#rows-'+kind));updatePreviewSafe()}
+function bindDel(c){c.querySelectorAll('[data-delrow]').forEach(function(b){b.onclick=function(){b.closest('[data-row]').remove()}})}
+function readRows(kind){var out=[];$('#rows-'+kind).querySelectorAll('[data-row]').forEach(function(row){var o={};row.querySelectorAll('[data-k]').forEach(function(i){var v=i.value;if(i.type==='number')v=v===''?'':parseFloat(v);o[i.dataset.k]=v});
+  var has=Object.keys(o).some(function(k){return o[k]!==''&&o[k]!=null});if(has)out.push(o)});return out}
+function updatePreviewSafe(){if($('#pv-name'))try{$('#view').dispatchEvent(new Event('input'))}catch(e){}}
+
+/* ---------- LEADS / CRM ---------- */
+var leadFilter=null;
+VIEWS.leads=function(){
+  $('#title').textContent='Заявки · CRM';$('#crumb').textContent='Керування · Люди та угоди';
+  $('#actions').innerHTML='<button class="btn btn-p" id="add-lead">+ Заявка</button>';
+  $('#add-lead').onclick=function(){leadModal()};
+  var order=['new','work','booked','paid','confirmed','refused'];
+  var counts={};order.forEach(function(s){counts[s]=DB.leads.filter(function(l){return l.status===s}).length});
+  var pipe='<div class="pipe">'+order.map(function(s){return '<div class="pcol'+(leadFilter===s?' on':'')+'" data-filter="'+s+'"><div class="n">'+counts[s]+'</div><div class="l"><span class="d" style="background:'+STATUS_DOT[s]+'"></span>'+STATUS[s]+'</div></div>'}).join('')+'</div>';
+  var list=DB.leads.slice().reverse().filter(function(l){return !leadFilter||l.status===leadFilter});
+  var table='<div class="panel"><div class="phd"><h3>'+(leadFilter?STATUS[leadFilter]:'Усі заявки')+'</h3><div class="r">'+(leadFilter?'<button class="btn btn-g btn-sm" id="clr">Показати всі</button>':'')+'</div></div><table><thead><tr><th>Клієнт</th><th>Тур / дата</th><th>Осіб</th><th>Джерело</th><th>Менеджер</th><th>Статус</th></tr></thead><tbody>'+
+    (list.length?list.map(function(l){return '<tr data-lead="'+l.id+'"><td><div class="t1">'+esc(l.name)+'</div><div class="t2">'+esc(l.phone)+'</div></td><td><div class="t1" style="font-weight:500">'+esc(l.tour)+'</div><div class="t2 mono">'+esc(l.date)+' · '+esc(l.city)+'</div></td><td class="num">'+esc(l.people)+'</td><td>'+esc(l.src)+'</td><td>'+esc(l.manager)+'</td><td><span class="pill p-'+l.status+'">'+STATUS[l.status]+'</span></td></tr>'}).join(''):'<tr><td colspan="6"><div class="empty">Немає заявок у цьому статусі</div></td></tr>')+
+    '</tbody></table></div>';
+  $('#view').innerHTML=pipe+table;
+  $('#view').querySelectorAll('[data-filter]').forEach(function(c){c.onclick=function(){leadFilter=leadFilter===c.dataset.filter?null:c.dataset.filter;VIEWS.leads()}});
+  if($('#clr'))$('#clr').onclick=function(){leadFilter=null;VIEWS.leads()};
+  bindLeadRows();
+};
+function bindLeadRows(){document.querySelectorAll('[data-lead]').forEach(function(r){r.onclick=function(){leadModal(r.dataset.lead)}})}
+function leadModal(id){
+  var l=id?DB.leads.filter(function(x){return x.id===id})[0]:{name:'',phone:'',tour:DB.tours[0]?DB.tours[0].name:'',date:'',people:2,city:'Тернопіль',status:'new',manager:'Ольга М.',src:'сайт',note:''};
+  var tourOpts=DB.tours.map(function(t){return '<option'+(t.name===l.tour?' selected':'')+'>'+esc(t.name)+'</option>'}).join('');
+  modal(id?'Заявка · '+l.name:'Нова заявка',
+    '<div class="grid-form">'+
+    fld('','Клієнт','<input id="l-name" value="'+esc(l.name)+'">')+
+    fld('','Телефон','<input id="l-phone" value="'+esc(l.phone)+'">')+
+    fld('full','Тур','<select id="l-tour">'+tourOpts+'</select>')+
+    fld('','Дата виїзду','<input id="l-date" value="'+esc(l.date)+'" placeholder="10.07.2026">')+
+    fld('','Осіб','<input id="l-people" type="number" min="1" value="'+esc(l.people)+'">')+
+    fld('','Місто','<input id="l-city" value="'+esc(l.city)+'">')+
+    fld('','Джерело','<select id="l-src">'+['сайт','кабінет агента','дзвінок','месенджер'].map(function(s){return '<option'+(s===l.src?' selected':'')+'>'+s+'</option>'}).join('')+'</select>')+
+    fld('','Статус','<select id="l-status">'+opts(STATUS,l.status)+'</select>')+
+    fld('','Менеджер','<input id="l-manager" value="'+esc(l.manager)+'">')+
+    fld('full','Нотатка','<textarea id="l-note">'+esc(l.note)+'</textarea>')+
+    '</div>'+(id?'<div style="margin-top:14px"><button class="btn btn-danger btn-sm" id="l-del">Видалити заявку</button></div>':''),
+    function(){
+      var o={name:$('#l-name').value.trim(),phone:$('#l-phone').value.trim(),tour:$('#l-tour').value,date:$('#l-date').value.trim(),people:parseInt($('#l-people').value)||1,city:$('#l-city').value.trim(),src:$('#l-src').value,status:$('#l-status').value,manager:$('#l-manager').value.trim(),note:$('#l-note').value};
+      if(!o.name){notify('Вкажіть клієнта');return false}
+      if(id){Object.assign(l,o)}else{o.id=uid('l');DB.leads.push(o)}
+      save();VIEWS.leads();badges();notify(id?'Заявку оновлено':'Заявку додано');
+    });
+  if(id)$('#l-del').onclick=function(){DB.leads=DB.leads.filter(function(x){return x.id!==id});save();ov.classList.remove('open');VIEWS.leads();badges();notify('Заявку видалено')};
+}
+
+/* ---------- AGENTS ---------- */
+VIEWS.agents=function(){
+  $('#title').textContent='Агенти';$('#crumb').textContent='Система · Партнери';
+  $('#view').innerHTML='<div class="panel"><table><thead><tr><th>Агенція</th><th>Місто</th><th>Телефон</th><th>Комісія</th><th>Груп</th><th>Статус</th></tr></thead><tbody>'+
+    DB.agents.map(function(a){return '<tr><td class="t1">'+esc(a.name)+'</td><td>'+esc(a.city)+'</td><td class="mono">'+esc(a.phone)+'</td><td class="num">'+esc(a.commission)+'</td><td class="num">'+esc(a.groups)+'</td><td><span class="pill p-'+(a.status==='active'?'active':'new')+'">'+(a.status==='active'?'Активний':'Очікує договір')+'</span></td></tr>'}).join('')+
+    '</tbody></table></div><div class="prev-note" style="margin-top:16px">Повний кабінет агента — у розробці. Тут з\'явиться керування договорами, агентськими цінами й взаєморозрахунками.</div>';
+};
+
+badges();go('dashboard');
+})();
+</script>
+</body>
+</html>
